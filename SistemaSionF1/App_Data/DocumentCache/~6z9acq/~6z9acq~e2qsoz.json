@@ -1,0 +1,51 @@
+{
+  "CacheSourceKey": "6z9acq",
+  "CachePdfKey": "6z9acq/6z9acq-kwwnao.pdf",
+  "CacheXpzKey": "6z9acq/6z9acq-e2qsoz.xpz",
+  "CacheInfoKey": "6z9acq/6z9acq-e2qsoz.json",
+  "CacheCopyKey": null,
+  "Document": "Type=FileSystem;File=\"11-pdf de prueba.pdf\";Location=\"Type=Physical;Path=C:\\Users\\ecasasola\\source\\repos\\SistemaSionF1\\SistemaSionF1\\Views\\Procesos\\Subidos\"",
+  "DocumentFileName": "11-pdf de prueba.pdf",
+  "DownloadFileName": null,
+  "InputOptions": {
+    "Format": "Pdf",
+    "Password": null
+  },
+  "PdfOutputOptions": {
+    "Watermarks": [
+      {
+        "$type": "GleamTech.DocumentUltimate.TextWatermark, GleamTech.DocumentUltimate",
+        "Text": "DocumentUltimate",
+        "TextAlignment": "Left",
+        "Font": null,
+        "FontColor": "Red",
+        "UseFontSize": false,
+        "HorizontalAlignment": "Center",
+        "VerticalAlignment": "Center",
+        "HorizontalDistance": 0.0,
+        "VerticalDistance": 0.0,
+        "DistanceIsPercentage": false,
+        "Width": 50.0,
+        "Height": 50.0,
+        "SizeIsPercentage": true,
+        "Rotation": 0.0,
+        "Opacity": 50.0,
+        "InBackground": false,
+        "AnnotationMode": false,
+        "PrintVisible": true,
+        "ScreenVisible": true,
+        "PageRange": "all"
+      }
+    ],
+    "FastWebViewEnabled": false,
+    "Password": null,
+    "Attachments": [],
+    "Format": "Pdf"
+  },
+  "XpzOutputOptions": {
+    "Password": "6z9acq",
+    "HighQualityEnabled": false,
+    "Format": "Xpz"
+  },
+  "Attachments": []
+}
