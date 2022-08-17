@@ -14,7 +14,6 @@ using SistemaSionF1.Views.Procesos;
 
 
 namespace SistemaSionF1
-
 {
     public partial class Index : System.Web.UI.Page
     {
@@ -95,9 +94,9 @@ namespace SistemaSionF1
                             sn.Insertar("INSERT INTO gen_navegacion ( token,usuario,estado) VALUES ('" + token + "','" + IdUser.Text + "' , 1)");
                             PSUser.Text = "";
                             IdUser.Text = "";
-                            Response.Redirect("Views/Sesion/MenuBarra.aspx");
-                      
+                           //Response.Redirect("Views/MDIPrincipal/PrincipalMaster.aspx");
 
+                            Response.Redirect("Views/Sesion/MenuBarra.aspx");
                         }
                         else
                         {
@@ -195,6 +194,11 @@ namespace SistemaSionF1
         protected void TextBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void cambiarcontra_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("CambiarContraseña");
         }
     }
 }

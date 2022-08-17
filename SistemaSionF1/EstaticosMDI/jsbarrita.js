@@ -1,24 +1,26 @@
 ﻿
 $(document).ready(function () {
-    var steps = $("#stepsbar li"), i = 0;
-    var j = 0;
+    //var steps = $("#stepsbar li"), i = 0;
+    //var j = 0;
 
-    var datosp = 1;
-    var datost = 2;
-    var datosf = 3;
-    var datose = 4;
-    var BCAJA = 5;
-    var BCUENTASPC = 6;
-    var BINVENTARIOS = 7;
-    var BINMUEBLES = 8;
-    var BMENAJE = 9;
-    var BCUENTASPP = 10;
-    var BTARJETAS = 11;
-    var BPASIVOCONTINGENTE = 12;
-    var BINGRESOS = 13;
-    var BREMESAS = 14;
-    var BEGRESOS = 15;
+    //var datosp = 1;
+    //var datost = 2;
+    //var datosf = 3;
+    //var datose = 4;
+    //var BCAJA = 5;
+    //var BCUENTASPC = 6;
+    //var BINVENTARIOS = 7;
+    //var BINMUEBLES = 8;
+    //var BMENAJE = 9;
+    //var BCUENTASPP = 10;
+    //var BTARJETAS = 11;
+    //var BPASIVOCONTINGENTE = 12;
+    //var BINGRESOS = 13;
+    //var BREMESAS = 14;
+    //var BEGRESOS = 15;
 
+
+    //si se necesita barra de progreso
 
     $('#data').hide();
 

@@ -22,7 +22,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css" rel="stylesheet" />
     <link href="../../EstaticosMDI/cssContene.css" rel="stylesheet" />
     <title>Principal</title>
-</head>
+</head> 
 <body>
     <form id="form1" runat="server">
 
@@ -60,56 +60,47 @@
             <div id="sidebar-wrapper">
                 <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
                     <li class="active">
-                        <a href="est_principal.aspx"><span class="fa-stack fa-lg pull-left"><i class="fa fa-home fa-stack-1x "></i></span>Inicio</a>
+                        <a href="PrincipalMaster.aspx"><span class="fa-stack fa-lg pull-left"><i class="fa fa-home fa-stack-1x "></i></span>Inicio</a>
 
                     </li>
 
                     <%--    INFOGENERAL    --%>
-                    <li>
-                        <a id="dash" href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-user fa-stack-1x "></i></span>Información General</a>
-                        <ul class="nav-pills nav-stacked" style="list-style-type: none;">
-                            <li><a id="datosp" href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-edit fa-stack-1x "></i></span>Datos Personales</a></li>
-                            <li><a id="datost" href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-phone fa-stack-1x "></i></span>Teléfono</a></li>
-                            <li><a id="datosf" href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-users fa-stack-1x "></i></span>Familiares</a></li>
-                            <li><a id="datose" href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-university fa-stack-1x "></i></span>Estudios</a></li>
 
 
-                        </ul>
-                    </li>
 
+
+                    <asp:Repeater ID="RepetirAreas" runat="server" OnItemDataBound="Repeater1_ItemDataBound">
+                        <ItemTemplate>
+                            <li>
+                                     <asp:Label ID="lblarea" runat="server" Visible="false" Text='<%# Eval("gen_areanombre") %>'></asp:Label>
+                        
+                                <a id="dash" href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-user fa-stack-1x "></i></span>   <%# Eval("gen_areanombre") %></a>
+ <ul class="nav-pills nav-stacked" style="list-style-type: none;">
+                                <asp:Repeater ID="repetirapp" runat="server">
+                                    <ItemTemplate>
+
+                                       
+                                                      <asp:Label ID="idapp" runat="server" Visible="false" Text='<%# Eval("codegenapp") %>'></asp:Label>
+                                            <li><a id="datosp" href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-edit fa-stack-1x "></i></span><%# Eval("gen_nombreapp") %></a></li>
+
+
+                                      
+                                    </ItemTemplate>
+                                </asp:Repeater>
+  </ul>
+                            </li>
+
+
+                        </ItemTemplate>
+                    </asp:Repeater>
 
                     <%--    ACTIVO          --%>
 
-                    <li>
-                        <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-dollar fa-stack-1x "></i></span>Activo</a>
-                        <ul class="nav-pills nav-stacked" style="list-style-type: none;">
-                            <li><a id="BCAJA" href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-bank fa-stack-1x "></i></span>Caja, Cuentas, Inversiones</a></li>
-
-                            <li><a id="BCUENTASPC" href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-dollar fa-stack-1x "></i></span>Cuentas por cobrar</a></li>
-                            <li><a id="BINVENTARIOS" href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-truck fa-stack-1x "></i></span>Inventarios</a></li>
-
-                            <li><a id="BINMUEBLES" href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-home fa-stack-1x "></i></span>Vehiculos, Inmuebles, Maquinaria y Equipo</a></li>
-
-                            <li><a id="BMENAJE" href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-television fa-stack-1x "></i></span>Menaje, Otros Activos</a></li>
-
-                        </ul>
-                    </li>
 
 
 
                     <%--    PASIVO          --%>
 
-
-                    <li>
-                        <a id="Pasivoop" href="#"><span class="fa-stack fa-lg pull-left"><i class="	fa fa-book fa-stack-1x "></i></span>Pasivo</a>
-                        <ul class="nav-pills nav-stacked" style="list-style-type: none;">
-                            <li><a id="BCUENTASPP" href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-bank fa-stack-1x "></i></span>Cuentas por pagar</a></li>
-
-                            <li><a id="BTARJETAS" href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-credit-card fa-stack-1x "></i></span>Tarjetas de crédito, Prestamos</a></li>
-                            <li><a id="BPASIVOCONTINGENTE" href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-dollar fa-stack-1x "></i></span>Pasivo contingente</a></li>
-
-                        </ul>
-                    </li>
 
 
 
@@ -119,31 +110,13 @@
 
 
 
-                    <li>
-                        <a id="ingresosop" href="#"><span class="fa-stack fa-lg pull-left"><i class="	fa fa-sort-amount-asc fa-stack-1x "></i></span>Ingresos Mensuales</a>
-                        <ul class="nav-pills nav-stacked" style="list-style-type: none;">
-
-                            <li><a id="BREMESAS" href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-dollar fa-stack-1x "></i></span>Ingresos en Relación</a></li>
-                            <li><a id="BINGRESOS" href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-dollar fa-stack-1x "></i></span>Negocios, Remesas y Otros </a></li>
-
-
-                        </ul>
-                    </li>
-
 
 
 
                     <%--    EGRESOS          --%>
 
 
-                    <li>
-                        <a id="permisos" href="#"><span class="fa-stack fa-lg pull-left"><i class="	fa fa-download fa-stack-1x "></i></span>Egresos</a>
-                        <ul class="nav-pills nav-stacked" style="list-style-type: none;">
-                            <li><a id="BEGRESOS" href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-dollar fa-stack-1x "></i></span>Egresos Mensuales</a></li>
-
-
-                        </ul>
-                    </li>
+            
 
 
 
@@ -153,21 +126,14 @@
 
 
 
-                    <li>
-                        <a id="mantenimientosop" runat="server" href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-edit fa-stack-1x "></i></span>Mantenimientos</a>
-                        <ul class="nav-pills nav-stacked" style="list-style-type: none;">
-                            <li><a id="BMANTENIMIENTOS" runat="server" href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-pencil fa-stack-1x "></i></span>NOMBRE MANTENIMIENTO</a></li>
-
-                        </ul>
-                    </li>
-
+               
 
 
                     <%--    OPCIONES DE ADMINISTRACION          --%>
 
 
 
-                    <li>
+<%--                    <li>
                         <a id="A1" runat="server" href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-pencil fa-stack-1x "></i></span>Administración</a>
                         <ul class="nav-pills nav-stacked" style="list-style-type: none;">
                             <li><a id="BASIGLOTE" runat="server" href="~/Views/EP/est_elegirlote.aspx"><span class="fa-stack fa-lg pull-left"><i class="fa fa-group fa-stack-1x "></i></span>Administración de lotes</a></li>
@@ -189,15 +155,15 @@
                         <a id="Reporte" runat="server" href="#"><span class="fa-stack fa-lg pull-left"><i class="	fa fa-archive fa-stack-1x "></i></span>
                             <asp:LinkButton ID="isrepo" OnClientClick="return confirm('¿Verificar su Reporte?')" CausesValidation="False" OnClick="isrepo_Click" Text="Reporte" runat="server" /></a>
 
-                    </li>
+                    </li>--%>
                     <li>
                         <a id="lotes" runat="server" href="#"><span class="fa-stack fa-lg pull-left"><i class="	fa fa-database fa-stack-1x "></i></span>
-                            <asp:LinkButton ID="LinkButton2" OnClientClick="return confirm('¿Desea elegir otro lote?')" CausesValidation="False" PostBackUrl="~/Views/EP/est_elegirlote.aspx" Text="Lotes" runat="server" /></a>
+                            <asp:Label ID="nombreuser" runat="server" /> </a>
 
                     </li>
                     <li class="btn-danger">
-                        <a id="salir" href="../Sesion/MenuBarra.aspx"><span class="fa-stack fa-lg pull-left"><i class="	fa fa-close fa-stack-1x "></i></span>Salir</a>
-
+                        <a id="salir" href="../Sesion/CerrarSesion.aspx"><span class="fa-stack fa-lg pull-left"><i class="	fa fa-close fa-stack-1x "></i></span>Salir</a>
+                        <a href="#">content</a>
                     </li>
                 </ul>
             </div>
@@ -209,7 +175,7 @@
                             <h1 id="encabezado">Sistemas Sion<a></a></h1>
 
                             <p id="subencabezado">
-                                Bienvenido, comienza llenando <b>Información General</b>, no olvides dar click en todas las petañas.
+                                Bienvenido, da click en una <b>Opcion</b>, para gestionar cualquier sistema.
                   
                             </p>
 
@@ -217,12 +183,16 @@
 
                         <div id="data" runat="server" class="menu">
                             <%-- Información General --%>
-                            <div id="INFOGENERAL" runat="server">
+
+                            <asp:Repeater ID="repetirdiv" runat="server">
+                                <ItemTemplate>
+
+                                                            <div id="INFOGENERAL" runat="server">
                                 <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
                                     <ContentTemplate>
 
                                         <div class="atrib1">
-                                            <iframe src="est_informacionGeneral.aspx" class="cont"></iframe>
+                                            <iframe id="iframer" runat="server" src='<%# Eval("gen_urlareaapp") %>' class="cont"></iframe>
                                         </div>
 
 
@@ -231,243 +201,12 @@
                                 </asp:UpdatePanel>
                             </div>
 
-                            <%-- Familia --%>
+                                </ItemTemplate>
+                            </asp:Repeater>
 
-                            <div id="family" runat="server">
+    
 
-                                <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
-                                    <ContentTemplate>
-
-                                        <div class="atrib1">
-                                            <iframe src="est_familiares.aspx" class="cont"></iframe>
-                                        </div>
-
-
-                                    </ContentTemplate>
-
-                                </asp:UpdatePanel>
-
-                            </div>
-                            <%-- telefonos --%>
-
-                            <div id="divtelefonos" runat="server">
-
-                                <asp:UpdatePanel ID="UpdatePanel23" runat="server" UpdateMode="Conditional">
-                                    <ContentTemplate>
-
-                                        <div class="atrib1">
-                                            <iframe src="est_telefonos.aspx" class="cont"></iframe>
-                                        </div>
-
-
-                                    </ContentTemplate>
-
-                                </asp:UpdatePanel>
-
-                            </div>
-
-
-                            <%-- Estudios --%>
-
-                            <div id="estudios" runat="server">
-
-                                <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Conditional">
-                                    <ContentTemplate>
-
-                                        <div class="atrib1">
-                                            <iframe src="est_estudios.aspx" class="cont"></iframe>
-                                        </div>
-
-
-                                    </ContentTemplate>
-
-                                </asp:UpdatePanel>
-
-                            </div>
-
-                            <%-- Caja --%>
-
-                            <div id="cajab" runat="server">
-
-                                <asp:UpdatePanel ID="UpdatePanel4" runat="server" UpdateMode="Conditional">
-                                    <ContentTemplate>
-
-                                        <div class="atrib1">
-                                            <iframe src="est_activoscaja.aspx" class="cont"></iframe>
-                                        </div>
-
-
-                                    </ContentTemplate>
-
-                                </asp:UpdatePanel>
-
-                            </div>
-                            <%-- cxpx --%>
-                            <div id="cxc" runat="server">
-
-                                <asp:UpdatePanel ID="UpdatePanel5" runat="server" UpdateMode="Conditional">
-                                    <ContentTemplate>
-
-                                        <div class="atrib1">
-                                            <iframe src="est_cuentaspc.aspx" class="cont"></iframe>
-                                        </div>
-
-
-                                    </ContentTemplate>
-
-                                </asp:UpdatePanel>
-
-                            </div>
-                            <%-- inversiones --%>
-                            <div id="inventarios" runat="server">
-
-                                <asp:UpdatePanel ID="UpdatePanel6" runat="server" UpdateMode="Conditional">
-                                    <ContentTemplate>
-
-                                        <div class="atrib1">
-                                            <iframe src="est_inventarios.aspx" class="cont"></iframe>
-                                        </div>
-
-
-                                    </ContentTemplate>
-
-                                </asp:UpdatePanel>
-
-                            </div>
-
-                            <%-- Mobiliario --%>
-                            <div id="mobiliario" runat="server">
-
-                                <asp:UpdatePanel ID="UpdatePanel7" runat="server" UpdateMode="Conditional">
-                                    <ContentTemplate>
-
-                                        <div class="atrib1">
-                                            <iframe src="est_equipo.aspx" class="cont"></iframe>
-                                        </div>
-
-
-                                    </ContentTemplate>
-
-                                </asp:UpdatePanel>
-
-                            </div>
-
-                            <%-- Menaje --%>
-                            <div id="menaje" runat="server">
-
-                                <asp:UpdatePanel ID="UpdatePanel8" runat="server" UpdateMode="Conditional">
-                                    <ContentTemplate>
-
-                                        <div class="atrib1">
-                                            <iframe src="menaje.aspx" class="cont"></iframe>
-                                        </div>
-
-
-                                    </ContentTemplate>
-
-                                </asp:UpdatePanel>
-
-                            </div>
-                            <%-- cuentaspp --%>
-                            <div id="cuentaspp" runat="server">
-
-                                <asp:UpdatePanel ID="UpdatePanel9" runat="server" UpdateMode="Conditional">
-                                    <ContentTemplate>
-
-                                        <div class="atrib1">
-                                            <iframe src="Pasivo/est_cuentaspp.aspx" class="cont"></iframe>
-                                        </div>
-
-
-                                    </ContentTemplate>
-
-                                </asp:UpdatePanel>
-
-                            </div>
-
-                            <%-- tarjetas --%>
-                            <div id="tarjetasdiv" runat="server">
-
-                                <asp:UpdatePanel ID="UpdatePanel10" runat="server" UpdateMode="Conditional">
-                                    <ContentTemplate>
-
-                                        <div class="atrib1">
-                                            <iframe src="Pasivo/est_tarjetas.aspx" class="cont"></iframe>
-                                        </div>
-
-
-                                    </ContentTemplate>
-
-                                </asp:UpdatePanel>
-
-                            </div>
-
-                            <%-- contingente --%>
-                            <div id="contingentediv" runat="server">
-
-                                <asp:UpdatePanel ID="UpdatePanel101" runat="server" UpdateMode="Conditional">
-                                    <ContentTemplate>
-
-                                        <div class="atrib1">
-                                            <iframe src="Pasivo/est_contingente.aspx" class="cont"></iframe>
-                                        </div>
-
-
-                                    </ContentTemplate>
-
-                                </asp:UpdatePanel>
-
-                            </div>
-
-
-
-                            <%-- Ingresos --%>
-                            <div id="ingresosdiv" runat="server">
-
-                                <asp:UpdatePanel ID="UpdatePanel11" runat="server" UpdateMode="Conditional">
-                                    <ContentTemplate>
-
-                                        <div class="atrib1">
-                                            <iframe src="Ingresos/est_ingresos.aspx" class="cont"></iframe>
-                                        </div>
-
-
-                                    </ContentTemplate>
-
-                                </asp:UpdatePanel>
-
-                            </div>
-                            <div id="ingresosrela" runat="server">
-
-                                <asp:UpdatePanel ID="UpdatePanel112" runat="server" UpdateMode="Conditional">
-                                    <ContentTemplate>
-
-                                        <div class="atrib1">
-                                            <iframe src="Ingresos/est_ingresosrela.aspx" class="cont"></iframe>
-                                        </div>
-
-
-                                    </ContentTemplate>
-
-                                </asp:UpdatePanel>
-
-                            </div>
-
-                            <div id="divegresos" runat="server">
-
-                                <asp:UpdatePanel ID="UpdatePanel12" runat="server" UpdateMode="Conditional">
-                                    <ContentTemplate>
-
-                                        <div class="atrib1">
-                                            <iframe src="Egresos/est_egresos.aspx" class="cont"></iframe>
-                                        </div>
-
-
-                                    </ContentTemplate>
-
-                                </asp:UpdatePanel>
-
-                            </div>
+                
 
 
                         </div>
@@ -488,7 +227,7 @@
         </div>
         <!-- /#page-content-wrapper -->
 
-        <asp:LinkButton ID="btnrecargar" runat="server" OnClick="btnrecargar_Click" ClientIDMode="Static"></asp:LinkButton>
+    <%--    <asp:LinkButton ID="btnrecargar" runat="server" OnClick="btnrecargar_Click" ClientIDMode="Static"></asp:LinkButton>--%>
 
         <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
         <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>

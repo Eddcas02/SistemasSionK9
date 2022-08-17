@@ -46,7 +46,24 @@ namespace SistemaSionF1.Controllers
                 MySqlDataReader reader = myCommand.ExecuteReader();
             }
         }
-
+        public string compararcorreo(string correo)
+        {
+            using (MySqlConnection sqlCon = new MySqlConnection(conexiongeneral.cadenadeconexiongeneral()))
+            {
+                string camporesultante = "";
+                try
+                {
+                    sqlCon.Open();
+                    string query = "SELECT codgenusuario FROM gen_usuario WHERE gen_usuariocorreo = '" + correo + "'";
+                    MySqlCommand command = new MySqlCommand(query, sqlCon);
+                    MySqlDataReader reader = command.ExecuteReader();
+                    reader.Read();
+                    camporesultante = reader.GetValue(0).ToString();
+                }
+                catch (Exception ex) { Console.WriteLine(ex.Message.ToString() + " \nERROR EN CONSULTA\n -"); }
+                return camporesultante;// devuelve un arrgeglo con los campos 
+            }
+        }
         public string obteneridusuario(string usuario)
         {
 

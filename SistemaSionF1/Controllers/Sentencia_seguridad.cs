@@ -416,6 +416,28 @@ namespace SistemaSionF1.Controllers
                 return dt;
             }
         }
+
+        public DataTable urlllenar(string user)
+        {
+            DataTable dt = new DataTable();
+            using (MySqlConnection sqlCon = new MySqlConnection(conexiongeneral.cadenadeconexiongeneral()))
+            {
+
+                try
+                {
+                    sqlCon.Open();
+                    MySqlCommand command = new MySqlCommand("SELECT DISTINCT gapp.gen_urlareaapp FROM gen_mdimenu gmdi INNER JOIN gen_areaapp gapp ON gmdi.codgenapp = gapp.codegenapp INNER JOIN gen_aplicacion gapl ON gapl.codgenapp=gmdi.codgenapp INNER JOIN gen_area ga ON ga.codgenarea = gapp.codgenarea WHERE gmdi.codgenusuario= '" + user + "' AND gmdi.gen_mdiest = 1 AND gapl.gen_estadoapp = 1", sqlCon);
+                    MySqlDataAdapter ds = new MySqlDataAdapter();
+                    ds.SelectCommand = command;
+                    ds.Fill(dt);
+
+
+                }
+                catch (Exception ex) { Console.WriteLine(ex.Message.ToString() + " \nERROR EN CONSULTA\n -"); }
+
+                return dt;
+            }
+        }
         public string url(string app)
         {
             String camporesultante = "";
@@ -540,7 +562,7 @@ namespace SistemaSionF1.Controllers
                 try
                 {
                     sqlCon.Open();
-                    string sql = "SELECT a.gen_mdiest FROM gen_mdimenu a INNER JOIN gen_usuario b ON a.codgenusuario=b.codgenusuario WHERE b.gen_usuarionombre='pggteo' AND a.codgenapp=7";
+                    string sql = "SELECT a.gen_mdiest FROM gen_mdimenu a INNER JOIN gen_usuario b ON a.codgenusuario=b.codgenusuario WHERE b.gen_usuarionombre='ecasasola' AND a.codgenapp=7";
                     MySqlCommand command = new MySqlCommand(sql, sqlCon);
                     MySqlDataReader reader = command.ExecuteReader();
                     reader.Read();

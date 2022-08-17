@@ -5,75 +5,144 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using SistemaSionF1.Models;
+using MySql.Data.MySqlClient;
+using System.Data;
+
+using System.DirectoryServices;
 
 namespace SistemaSionF1.Views.MDIPrincipal
 {
     public partial class PrincipalMaster : System.Web.UI.Page
     {
-        ModeloEST mest = new ModeloEST();
-        Conexion conexiongeneral = new Conexion();
-        loteval lte = new loteval();
-        string cifglobal, usernombre, lote, estadoep;
-        protected void LinkButton1_Click(object sender, EventArgs e)
-        {
-            bool listo;
-            listo = lte.validaretapa(cifglobal, lote);
-            if (listo == true)
-            {
-                string cambioetapa = "UPDATE EP_Colaborador SET ColaboradorEstado = 1 WHERE  ColaboradorID = '" + cifglobal + "' AND LoteID = '" + lote + "'  ";
-                mest.executesql(cambioetapa);
-                String script = "alert('Completo Correctamente'); window.location.href= 'est_elegirlote.aspx';";
-                ScriptManager.RegisterStartupScript(this, GetType().GetType(), "alertMessage", script, true);
+        Conexion conn = new Conexion();
+        Sentencia sn = new Sentencia();
+        Logica lg = new Logica();
+        Sentencia_seguridad sns = new Sentencia_seguridad();
+        string abre;
 
+        protected void Page_Load(object sender, EventArgs e)
+        {
+       
+            try
+            {
+                if (Session.IsNewSession)
+                {
+                    Session.Clear();
+                    Session.Abandon();
+                    Session.RemoveAll();
+                    ScriptManager.RegisterStartupScript(this, GetType(), "error", "alert('Favor ingresar su Usuario y Contraseña');", true);
+                    Response.Redirect("MenuBarra.aspx");
+                }
+
+                else
+                {
+                    try
+                    {
+                        nombreuser.Text = Session["Nombre"].ToString();
+                        abre = Session["sesion_usuario"].ToString();
+                        string resultado = abre.Substring(0, 1);
+                        string mayus = resultado.ToUpper();
+                        llenardivs();
+                        //icono.Visible = false;    
+                        DataSet ds1 = sns.conultaareaapp(sns.obteneridusuario(abre));
+                        RepetirAreas.DataSource = ds1;
+                        RepetirAreas.DataBind();
+
+
+                    }
+                    catch (Exception err)
+                    {
+                        Console.WriteLine("Sesion expirada: " + err.Message);
+                        Response.Redirect("../../Index.aspx");
+                    }
+                }
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine("Sesion expirada: " + err.Message);
+                Response.Redirect("login.aspx");
+            }
+
+        }
+
+
+        internal void Show()
+        {
+            throw new NotImplementedException();
+        }
+        protected void Repeater1_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            //string area;
+
+            Repeater r = e.Item.FindControl("repetirapp") as Repeater;
+            Label area = (Label)e.Item.FindControl("lblarea");
+            DataSet ds2 = sns.consultaappnombre(sns.obteneridusuario(abre), area.Text);
+            if (r != null)
+            {
+                r.DataSource = ds2;
+                r.DataBind();
+            }
+        }
+
+        public void llenardivs()
+        {
+
+            DataTable ds1 = sns.urlllenar(sns.obteneridusuario(abre));
+            repetirdiv.DataSource = ds1;
+            repetirdiv.DataBind();
+
+
+        }
+        protected void btnredirigir_Click(object sender, EventArgs e)
+        {
+
+
+
+            string idc;
+            LinkButton btn = (LinkButton)sender;
+            RepeaterItem item = (RepeaterItem)btn.NamingContainer;
+
+            idc = ((Label)item.FindControl("idapp")).Text;
+
+            string url = sns.url(idc);
+            string texto = abre;
+            if (idc == "20")
+            {
+                Response.Redirect(url + "?codigo=" + Encriptar(texto));
 
             }
             else
             {
-                string cadenatot = lte.cadenacampos(cifglobal, lote);
+                Response.Redirect(url);
 
-                String script = "alert(\"Aún Falta completar los siguientes campos: " + cadenatot + "\"); ";
-                ScriptManager.RegisterStartupScript(this, GetType().GetType(), "alertMessage", script, true);
             }
+
+
+
         }
-
-        string[] loteact;
-
-
-
-        protected void Page_Load(object sender, EventArgs e)
+        protected void cerrarsession_Click(object sender, EventArgs e)
         {
-            usernombre = Convert.ToString(Session["sesion_usuario"]);
-            lote = Convert.ToString(Session["lotepasa"]);
-            estadoep = Convert.ToString(Session["estadoepp"]);
-
-            string EPParametroDescripcion = mest.textomensaje();
-            LinkButton1.Attributes.Add("onclick", "return confirm('" + EPParametroDescripcion + "');");
-            if (estadoep == "0")
+            if (Session.IsNewSession)
             {
-                finaltodo.Visible = false;
-
+                ScriptManager.RegisterStartupScript(this, GetType(), "error", "alert('Entra If');", true);
             }
-            cifglobal = mest.idusuariogeneral(usernombre);
-            string area = mest.obtenerarea(cifglobal);
-            string puesto = mest.obtenerpuesto(cifglobal);
-
-            mantenimientosop.Visible = false;
-
-            BASIGLOTE.Visible = false;
-            reportes.Visible = false;
-            BMANTENIMIENTOS.Visible = false;
-            A1.Visible = false;
-
+            else
+            {
+                Session.Clear();
+                Session.Abandon();
+                Session.RemoveAll();
+                Response.Redirect("Login.aspx");
+            }
         }
-        protected void isrepo_Click(object sender, EventArgs e)
+
+        public static string Encriptar(string _cadenaAencriptar)
         {
-            Response.Redirect("http://10.60.81.49/Reportes/aestadopatrimonial.aspx?" + lote + "," + cifglobal + "");
+            string result = string.Empty;
+            byte[] encryted = System.Text.Encoding.Unicode.GetBytes(_cadenaAencriptar);
+            result = Convert.ToBase64String(encryted);
+            return result;
         }
 
-
-        protected void btnrecargar_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("est_principal.aspx");
-        }
     }
 }

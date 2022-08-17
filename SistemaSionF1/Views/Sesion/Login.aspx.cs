@@ -9,9 +9,9 @@ using System.DirectoryServices;
 using System.DirectoryServices.ActiveDirectory;
 
 
-namespace Login_Web
+namespace SistemaSionF1
 {
-    public partial class WebForm1 : System.Web.UI.Page
+    public partial class Login : System.Web.UI.Page
     {
             string nombre;
         protected void Page_Load(object sender, EventArgs e)
