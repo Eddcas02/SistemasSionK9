@@ -90,10 +90,20 @@ namespace SistemaSionF1.Views.Sesion
             {
                 if(FechaInicial.Text!="" && Empresa.SelectedValue!="0" && Finca.SelectedValue!="0")
                 {
-                CM.procedimientoEjecutar(FechaInicial, Empresa, Finca);
+               string val = CM.procedimientoEjecutar(FechaInicial, Empresa, Finca);
+
+                    if (val=="1") {
+                        String script = "alert('Procesado con exito');";
+                        ScriptManager.RegisterStartupScript(this, GetType().GetType(), "alertMessage", script, true);
+                        Finca.SelectedIndex = 0;
+                        Empresa.SelectedIndex = 0;
+                    }
+                    else {
+                        String script = "alert('Error al procesar ');";
+                        ScriptManager.RegisterStartupScript(this, GetType().GetType(), "alertMessage", script, true);
+                    }
                     //FechaInicial.Text = "";
-                    Finca.SelectedIndex = 0;
-                    Empresa.SelectedIndex = 0;
+                   
                 }
                 else
                 {

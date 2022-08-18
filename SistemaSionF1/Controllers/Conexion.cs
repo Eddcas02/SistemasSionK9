@@ -24,7 +24,7 @@ namespace SistemaSionF1.Controllers
         }
         public string Conectar(string b)
         {
-            string connectionString = "Data Source=190.148.254.66;Initial Catalog=" + b + ";Persist Security Info = False;User ID=sa;Password=AdminBanabat2011;";
+            string connectionString = "Data Source= 190.148.254.66; Initial Catalog=" + b + ";Persist Security Info = False;User ID=sa;Password=AdminBanabat2011;";
             return connectionString;
         }
 

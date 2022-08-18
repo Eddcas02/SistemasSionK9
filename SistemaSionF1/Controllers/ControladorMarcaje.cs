@@ -17,11 +17,12 @@ namespace SistemaSionF1.Controllers
     {
         Conexion conexiongeneral = new Conexion();
         Bitacora bit = new Bitacora();
-        public void procedimientoEjecutar(TextBox nFechaInicial=null, DropDownList nEmpresa=null, DropDownList nFinca=null)
+        string validacion;
+        public string procedimientoEjecutar(TextBox nFechaInicial=null, DropDownList nEmpresa=null, DropDownList nFinca=null)
         {
             using (SqlConnection sqlCon = new SqlConnection(conexiongeneral.Conectar("dbMarcajeQA")))
             {
-
+               
                 try
                 {
                         SqlCommand cmd = new SqlCommand();
@@ -36,12 +37,15 @@ namespace SistemaSionF1.Controllers
                         bit.bitacoraRMarcaje("SP_TRANSFERENCIA_MARCAJE (" + nFechaInicial.Text+ ", " + nEmpresa.SelectedValue + ", " + nFinca.SelectedValue + ")");
                     //bit.bitacoraRMarcaje("SP_TRANSFERENCIA_MARCAJE (" + nFechaInicial.Text + ", " + Convert.ToInt32(nEmpresa.SelectedValue) + ", " + Convert.ToInt32(nFinca.SelectedValue) + ")");
 
-                    MessageBox.Show("Proceso Realizado Con Exito","Proceso");
+                    return validacion = "1";
+                    //Console.WriteLine("Proceso Realizado Con Exito");
+                   
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Proceso Con Errores", "Proceso",MessageBoxButton.OK,MessageBoxImage.Error);
+                    //MessageBox.Show("Proceso Con Errores", "Proceso",MessageBoxButton.OK,MessageBoxImage.Error);
                     bit.bitacoraRMarcaje("Error al Ejecutar SP_TRANSFERENCIA_MARCAJE");
+                    return validacion = "0";
                 }
 
             }

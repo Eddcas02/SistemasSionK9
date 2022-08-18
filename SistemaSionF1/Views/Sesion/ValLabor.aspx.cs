@@ -32,7 +32,7 @@ namespace SistemaSionF1.Views.Sesion
                 try
                 {
                     sqlCon.Open();
-                    string query = "SELECT Codigo, Descripcion FROM UBICACION ORDER BY Codigo ASC";
+                    string query = "SELECT Codigo, Descripcion FROM UBICACION where codigo > 0 ORDER BY Codigo ASC";
                     SqlDataAdapter da = new SqlDataAdapter(query, sqlCon);
                     DataSet ds = new DataSet();
                     da.Fill(ds);
@@ -51,13 +51,43 @@ namespace SistemaSionF1.Views.Sesion
 
         protected void Procesar_Cick(object sender, EventArgs e)
         {
+            string val1, val2, val3;
             try
             {
                 if (FechaInicialL.Text != "" && FechaFinal.Text != "0" && FincaL.SelectedValue != "0")
                 {
-                    CL.procedimientoDeshabilita();
-                    CL.actualizaLabores(FechaInicialL, FechaFinal, FincaL);
-                    CL.procedimientoHabilita();
+                   val1= CL.procedimientoDeshabilita();
+                  
+                
+                    if (val1 == "1") {
+                        val2 = CL.actualizaLabores(FechaInicialL, FechaFinal, FincaL);
+
+                        if (val2 == "1")
+                        {
+                            val3 = CL.procedimientoHabilita();
+                            if (val3 == "1")
+                            {
+                                String script = "alert('Procesado con éxito');";
+                                ScriptManager.RegisterStartupScript(this, GetType().GetType(), "alertMessage", script, true);
+
+                            }
+                            else {
+                                String script = "alert('Error al habilitar');";
+                                ScriptManager.RegisterStartupScript(this, GetType().GetType(), "alertMessage", script, true);
+                            }
+                        }
+                        else {
+
+                            String script = "alert('Error al procesar');";
+                            ScriptManager.RegisterStartupScript(this, GetType().GetType(), "alertMessage", script, true);
+                        }
+                    }
+                    else
+                    {
+                        String script = "alert('Error al deshabilitar ');";
+                        ScriptManager.RegisterStartupScript(this, GetType().GetType(), "alertMessage", script, true);
+                    }
+              
                     //FechaInicialL.Text = "";
                     //FechaFinal.Text = "";
                     FincaL.SelectedIndex = 0;

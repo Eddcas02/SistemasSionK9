@@ -17,8 +17,8 @@ namespace SistemaSionF1.Controllers
     {
         Conexion conexiongeneral = new Conexion();
         Bitacora bit = new Bitacora();
-
-        public void procedimientoDeshabilita()
+        string validar, validar2, validar3;
+        public string procedimientoDeshabilita()
         {
             using (SqlConnection sqlCon = new SqlConnection(conexiongeneral.Conectar("SIONSJ3")))
             {
@@ -34,16 +34,18 @@ namespace SistemaSionF1.Controllers
                     //actualizaLabores();
                     bit.bitacoraValLabor("SP_DISABLELABOR (Labor Ingreso Deshabilitado)");
                     //MessageBox.Show("Trigger Deshabilitado Con Exito", "Proceso");
+                    return validar = "1";
                 }
                 catch
                 {
-                    MessageBox.Show("No se pudo deshabilitar trigger", "Proceso", MessageBoxButton.OK, MessageBoxImage.Error);
+                  
                     bit.bitacoraRMarcaje("Error al Ejecutar SP_DISABLELABOR");
+                    return validar = "0";
                 }
             }
         }
 
-        public void actualizaLabores(TextBox nFechaInicialL = null, TextBox nFechaFinal = null, DropDownList nFincaL = null)
+        public string actualizaLabores(TextBox nFechaInicialL = null, TextBox nFechaFinal = null, DropDownList nFincaL = null)
         {
             using (SqlConnection sqlCon = new SqlConnection(conexiongeneral.Conectar2()))
             {
@@ -62,16 +64,18 @@ namespace SistemaSionF1.Controllers
                     //procedimientoHabilita();
                     bit.bitacoraRMarcaje("SP_ACTUALIZA_LABORES (" + nFechaInicialL.Text + ", " + nFechaFinal.Text + ", " + nFincaL.SelectedValue + ")");
                     //MessageBox.Show("Proceso Realizado Con Exito", "Proceso");
+                    return validar2 = "1";
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error al ejecutar Actualizar Labores", "Proceso", MessageBoxButton.OK, MessageBoxImage.Error);
+                   
                     bit.bitacoraRMarcaje("Error al Ejecutar SP_ACTUALIZA_LABORES");
+                    return validar = "0";
                 }
             }
         }
 
-        public void procedimientoHabilita()
+        public string procedimientoHabilita()
         {
             using (SqlConnection sqlCon = new SqlConnection(conexiongeneral.Conectar("SIONSJ3")))
             {
@@ -85,12 +89,13 @@ namespace SistemaSionF1.Controllers
                     sqlCon.Open();
                     cmd.ExecuteNonQuery();
                     bit.bitacoraValLabor("SP_ENABLELABOR (Labor Ingreso Habilitado)");
-                    MessageBox.Show("Proceso Realizado Con Exito", "Proceso");
+                    return validar3 = "1";
                 }
                 catch
                 {
-                    MessageBox.Show("No se pudo habilitar el trigger", "Proceso", MessageBoxButton.OK, MessageBoxImage.Error);
+                  
                     bit.bitacoraRMarcaje("Error al Ejecutar SP_ENABLELABOR");
+                    return validar3 = "0";
                 }
             }
         }

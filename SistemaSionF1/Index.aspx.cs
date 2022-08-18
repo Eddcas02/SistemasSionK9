@@ -94,7 +94,7 @@ namespace SistemaSionF1
                             sn.Insertar("INSERT INTO gen_navegacion ( token,usuario,estado) VALUES ('" + token + "','" + IdUser.Text + "' , 1)");
                             PSUser.Text = "";
                             IdUser.Text = "";
-                            //Response.Redirect("Views/MDIPrincipal/PrincipalMaster.aspx");
+                           //Response.Redirect("Views/MDIPrincipal/PrincipalMaster.aspx");
 
                             Response.Redirect("Views/Sesion/MenuBarra.aspx");
                         }

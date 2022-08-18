@@ -684,7 +684,6 @@ C:\Users\ecasasola\Desktop\devdll\SistemaSionF1\bin\pt\Microsoft.ReportViewer.Wi
 C:\Users\ecasasola\Desktop\devdll\SistemaSionF1\bin\ru\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\ecasasola\Desktop\devdll\SistemaSionF1\bin\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\ecasasola\Desktop\devdll\SistemaSionF1\bin\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
-C:\Users\ecasasola\Desktop\devdll\SistemaSionF1\obj\Debug\SistemaSionF1.csproj.AssemblyReference.cache
 C:\Users\ecasasola\Desktop\devdll\SistemaSionF1\obj\Debug\RdlCompile.cache
 C:\Users\ecasasola\Desktop\devdll\SistemaSionF1\obj\Debug\RdlCompile.compiled
 C:\Users\ecasasola\Desktop\devdll\SistemaSionF1\obj\Debug\SistemaSionF1.csproj.CoreCompileInputs.cache
