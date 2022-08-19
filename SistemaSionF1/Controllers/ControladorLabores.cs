@@ -18,9 +18,9 @@ namespace SistemaSionF1.Controllers
         Conexion conexiongeneral = new Conexion();
         Bitacora bit = new Bitacora();
         string validar, validar2, validar3;
-        public string procedimientoDeshabilita()
+        public string procedimientoDeshabilita(string usuario)
         {
-            using (SqlConnection sqlCon = new SqlConnection(conexiongeneral.Conectar("SIONSJ3")))
+            using (SqlConnection sqlCon = new SqlConnection(conexiongeneral.Conectar("SION")))
             {
 
                 try
@@ -39,13 +39,13 @@ namespace SistemaSionF1.Controllers
                 catch
                 {
                   
-                    bit.bitacoraRMarcaje("Error al Ejecutar SP_DISABLELABOR");
+                    bit.bitacoraRMarcaje("Error al Ejecutar SP_DISABLELABOR", usuario);
                     return validar = "0";
                 }
             }
         }
 
-        public string actualizaLabores(TextBox nFechaInicialL = null, TextBox nFechaFinal = null, DropDownList nFincaL = null)
+        public string actualizaLabores(TextBox nFechaInicialL = null, TextBox nFechaFinal = null, DropDownList nFincaL = null, string usuario = null)
         {
             using (SqlConnection sqlCon = new SqlConnection(conexiongeneral.Conectar2()))
             {
@@ -62,22 +62,22 @@ namespace SistemaSionF1.Controllers
                     sqlCon.Open();
                     cmd.ExecuteNonQuery();
                     //procedimientoHabilita();
-                    bit.bitacoraRMarcaje("SP_ACTUALIZA_LABORES (" + nFechaInicialL.Text + ", " + nFechaFinal.Text + ", " + nFincaL.SelectedValue + ")");
+                    bit.bitacoraRMarcaje("SP_ACTUALIZA_LABORES (" + nFechaInicialL.Text + ", " + nFechaFinal.Text + ", " + nFincaL.SelectedValue + ")" , usuario);
                     //MessageBox.Show("Proceso Realizado Con Exito", "Proceso");
                     return validar2 = "1";
                 }
                 catch (Exception ex)
                 {
                    
-                    bit.bitacoraRMarcaje("Error al Ejecutar SP_ACTUALIZA_LABORES");
+                    bit.bitacoraRMarcaje("Error al Ejecutar SP_ACTUALIZA_LABORES", usuario);
                     return validar = "0";
                 }
             }
         }
 
-        public string procedimientoHabilita()
+        public string procedimientoHabilita(string usuario)
         {
-            using (SqlConnection sqlCon = new SqlConnection(conexiongeneral.Conectar("SIONSJ3")))
+            using (SqlConnection sqlCon = new SqlConnection(conexiongeneral.Conectar("SION")))
             {
 
                 try
@@ -94,7 +94,7 @@ namespace SistemaSionF1.Controllers
                 catch
                 {
                   
-                    bit.bitacoraRMarcaje("Error al Ejecutar SP_ENABLELABOR");
+                    bit.bitacoraRMarcaje("Error al Ejecutar SP_ENABLELABOR", usuario);
                     return validar3 = "0";
                 }
             }

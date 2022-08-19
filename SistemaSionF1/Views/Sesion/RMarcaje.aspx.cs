@@ -19,9 +19,10 @@ namespace SistemaSionF1.Views.Sesion
     {
         ControladorMarcaje CM = new ControladorMarcaje();
         Conexion conexiongeneral = new Conexion();
-       
+        string abre;
         protected void Page_Load(object sender, EventArgs e)
         {
+            abre = Session["sesion_usuario"].ToString();
             if (!IsPostBack)
             {
            LLenarComboEmpresa();
@@ -32,7 +33,7 @@ namespace SistemaSionF1.Views.Sesion
         public void LLenarComboEmpresa()
 
         {
-            using (SqlConnection sqlCon = new SqlConnection(conexiongeneral.Conectar("SIONSJ3")))
+            using (SqlConnection sqlCon = new SqlConnection(conexiongeneral.Conectar("SION")))
             {
                 try
                 {
@@ -62,7 +63,7 @@ namespace SistemaSionF1.Views.Sesion
                 try
                 {
                     sqlCon.Open();
-                    string query = "SELECT UE.IdFinca,UE.Descripcion,E.Codigo FROM [dbMarcajeQA].[dbo].[Ubicacion_Empresa] as UE INNER JOIN [SIONSJ3].[dbo].[EMPRESA] as E ON UE.Empresa = E.Codigo where E.Codigo='" + codigo + "'";
+                    string query = "SELECT UE.IdFinca,UE.Descripcion,E.Codigo FROM [dbMarcaje].[dbo].[Ubicacion_Empresa] as UE INNER JOIN [SION].[dbo].[EMPRESA] as E ON UE.Empresa = E.Codigo where E.Codigo='" + codigo + "'";
                     SqlDataAdapter da = new SqlDataAdapter(query, sqlCon);
                     DataSet ds = new DataSet();
                     da.Fill(ds);
@@ -90,7 +91,7 @@ namespace SistemaSionF1.Views.Sesion
             {
                 if(FechaInicial.Text!="" && Empresa.SelectedValue!="0" && Finca.SelectedValue!="0")
                 {
-               string val = CM.procedimientoEjecutar(FechaInicial, Empresa, Finca);
+               string val = CM.procedimientoEjecutar(FechaInicial, Empresa, Finca, abre);
 
                     if (val=="1") {
                         String script = "alert('Procesado con exito');";

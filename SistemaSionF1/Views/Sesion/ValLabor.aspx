@@ -12,6 +12,20 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css" rel="stylesheet"/>
+
+
+
+
+
+
+
+    <link href="../../EstaticosMDI/cssContene.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+
     <title>Marcajes</title>
      <style>
          @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400&display=swap');
@@ -193,6 +207,14 @@
      <div id="menu" runat="server" class="menu"></div>
     <form id="form1" runat="server">
              <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <div class="col-4" style="margin-top:1% ; margin-left:1%">
+           
+               
+             
+  <a href="../Sesion/MenuBarra.aspx" ><i style="color:black" class="fa fa-home fa-3x"></i></a>
+
+
+                    </div>
         <div class="general">
             <p id="color" runat="server" hidden="hidden"></p>
             <div class="formularioCobros">

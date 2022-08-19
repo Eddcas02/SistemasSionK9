@@ -16,8 +16,10 @@ namespace SistemaSionF1.Views.Sesion
     {
         ControladorLabores CL = new ControladorLabores();
         Conexion conexiongeneral = new Conexion();
+        string abre;
         protected void Page_Load(object sender, EventArgs e)
         {
+            abre = Session["sesion_usuario"].ToString();
             if (!IsPostBack)
             {
                 LLenarComboFincaL();
@@ -27,7 +29,7 @@ namespace SistemaSionF1.Views.Sesion
         public void LLenarComboFincaL()
 
         {
-            using (SqlConnection sqlCon = new SqlConnection(conexiongeneral.Conectar("SIONSJ3")))
+            using (SqlConnection sqlCon = new SqlConnection(conexiongeneral.Conectar("SION")))
             {
                 try
                 {
@@ -56,15 +58,15 @@ namespace SistemaSionF1.Views.Sesion
             {
                 if (FechaInicialL.Text != "" && FechaFinal.Text != "0" && FincaL.SelectedValue != "0")
                 {
-                   val1= CL.procedimientoDeshabilita();
+                   val1= CL.procedimientoDeshabilita(abre);
                   
                 
                     if (val1 == "1") {
-                        val2 = CL.actualizaLabores(FechaInicialL, FechaFinal, FincaL);
+                        val2 = CL.actualizaLabores(FechaInicialL, FechaFinal, FincaL,abre);
 
                         if (val2 == "1")
                         {
-                            val3 = CL.procedimientoHabilita();
+                            val3 = CL.procedimientoHabilita(abre);
                             if (val3 == "1")
                             {
                                 String script = "alert('Procesado con éxito');";

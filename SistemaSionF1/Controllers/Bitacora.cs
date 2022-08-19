@@ -14,11 +14,11 @@ namespace SistemaSionF1.Controllers
     {
         Conexion conexiongeneral = new Conexion();
         DateTime fechahora = DateTime.Now;
-        public void bitacoraRMarcaje( string evento)//agregar parametro usuario para la bitacora
+        public void bitacoraRMarcaje( string evento, string usuario)//agregar parametro usuario para la bitacora
         {
             //string area = obtenerarea(userr);
             string ultimobit = obtenerultimo("BITACORA_MARCAJE", "idRegistro");
-            string insertbit = "INSERT INTO BITACORA_MARCAJE(idRegistro,FechaProceso,Usuario,AccionRealizada) VALUES ('" + ultimobit + "','"+fechahora+"','sa','" + evento + "')";
+            string insertbit = "INSERT INTO BITACORA_MARCAJE(idRegistro,FechaProceso,Usuario,AccionRealizada) VALUES ('" + ultimobit + "','"+fechahora+"','"+usuario+"','" + evento + "')";
             executesql(insertbit);
 
         }
@@ -34,7 +34,7 @@ namespace SistemaSionF1.Controllers
         public string obtenerultimo(string tabla, string campo)
         {
             String camporesultante = "";
-            using (SqlConnection sqlCon = new SqlConnection(conexiongeneral.Conectar("SIONSJ3")))
+            using (SqlConnection sqlCon = new SqlConnection(conexiongeneral.Conectar("SION")))
             {
                 try
                 {
@@ -58,7 +58,7 @@ namespace SistemaSionF1.Controllers
 
         public void executesql(string sql)
         {
-            using (SqlConnection sqlCon = new SqlConnection(conexiongeneral.Conectar("SIONSJ3")))
+            using (SqlConnection sqlCon = new SqlConnection(conexiongeneral.Conectar("SION")))
             {
 
                 try

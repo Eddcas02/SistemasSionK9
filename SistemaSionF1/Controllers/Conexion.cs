@@ -30,7 +30,7 @@ namespace SistemaSionF1.Controllers
 
         public string Conectar2()
         {
-            string connectionString = "Data Source = 190.148.254.66; Initial Catalog = SIONSJ3; Persist Security Info = False; User ID = sa; Password = AdminBanabat2011;";
+            string connectionString = "Data Source = 190.148.254.66; Initial Catalog = SION; Persist Security Info = False; User ID = sa; Password = AdminBanabat2011;";
             return connectionString;
         }
 
