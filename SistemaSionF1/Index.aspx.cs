@@ -23,6 +23,7 @@ namespace SistemaSionF1
         encrip en = new encrip();
         claseComprobadora ccp = new claseComprobadora();
         bitacoragen bit = new bitacoragen();
+        Sentencia_proceso sp = new Sentencia_proceso();
         
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -88,23 +89,33 @@ namespace SistemaSionF1
                         if (contra == en.Encrypt(PSUser.Text)) {
 
                             Session["Nombre"] = sn.nombreuser(IdUser.Text); ;
-                            string randomstring = ccp.cadenarandom();
-                            string token = ccp.Encrypt(randomstring);
-                            bit.bitacoraing(IdUser.Text, "Inicio de sesion");
-                            sn.Insertar("INSERT INTO gen_navegacion ( token,usuario,estado) VALUES ('" + token + "','" + IdUser.Text + "' , 1)");
-                            PSUser.Text = "";
-                            IdUser.Text = "";
-                           //Response.Redirect("Views/MDIPrincipal/PrincipalMaster.aspx");
+                            
+                            //Response.Redirect("Views/MDIPrincipal/PrincipalMaster.aspx");
+                            string bitacora = sp.obtenerbitacora(IdUser.Text);
 
-                            Response.Redirect("Views/Sesion/MenuBarra.aspx");
+                            if(bitacora == "" || bitacora == null)
+                            {
+                                Response.Redirect("CrearContraseña");
+                            }
+                            else
+                            {
+                                string randomstring = ccp.cadenarandom();
+                                string token = ccp.Encrypt(randomstring);
+                                bit.bitacoraing(IdUser.Text, "Inicio de sesion");
+                                sn.Insertar("INSERT INTO gen_navegacion ( token,usuario,estado) VALUES ('" + token + "','" + IdUser.Text + "' , 1)");
+                                PSUser.Text = "";
+                                IdUser.Text = "";
+                                Response.Redirect("Views/Sesion/MenuBarra.aspx");
+                            }
                         }
                         else
                         {
 
                             //usuario o contraseña equivocado
+                         
+                            bit.bitacoraing(IdUser.Text, "Contraseña equivocada");
                             PSUser.Text = "";
                             IdUser.Text = "";
-                            bit.bitacoraing(IdUser.Text, "Contraseña equivocada");
                             String script = "alert('usuario o contraseña equivocados ');";
                             ScriptManager.RegisterStartupScript(this, GetType().GetType(), "alertMessage", script, true);
                         }

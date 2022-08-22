@@ -252,6 +252,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="CrearContraseña.aspx" />
     <Content Include="CRM-Script\Script.js" />
     <Content Include="CRM-Script\scriptparamodal.js" />
     <Content Include="DiseñoCss\estilosav.css" />
@@ -767,6 +768,13 @@
     <Compile Include="Controllers\Sentencia.cs" />
     <Compile Include="Controllers\Sentencia_proceso.cs" />
     <Compile Include="Controllers\Sentencia_seguridad.cs" />
+    <Compile Include="CrearContraseña.aspx.cs">
+      <DependentUpon>CrearContraseña.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CrearContraseña.aspx.designer.cs">
+      <DependentUpon>CrearContraseña.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

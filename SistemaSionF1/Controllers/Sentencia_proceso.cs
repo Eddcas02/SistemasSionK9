@@ -846,5 +846,54 @@ namespace SistemaSionF1.Controllers
                 return Campos;
             }
         }
+
+        public void actualizarcontraseña( string contranueva, string usuario)
+        {
+            using (MySqlConnection sqlCon = new MySqlConnection(conexiongeneral.cadenadeconexiongeneral()))
+            {
+                sqlCon.Open();
+                string query = "UPDATE gen_usuario SET gen_pass = '" + contranueva + "' WHERE gen_usuarionombre = '"+usuario+"'";
+                MySqlCommand myCommand = new MySqlCommand(query, sqlCon);
+                MySqlDataReader reader = myCommand.ExecuteReader();
+            }
+        }
+
+        public string obtenercontraseña(string contraantigua, string usuario)
+        {
+            using (MySqlConnection sqlCon = new MySqlConnection(conexiongeneral.cadenadeconexiongeneral()))
+            {
+                string camporesultante = "";
+                try
+                {
+                    sqlCon.Open();
+                    string query = "SELECT codgenusuario FROM gen_usuario WHERE gen_pass = '"+contraantigua+ "' AND gen_usuarionombre = '"+usuario+"'";
+                    MySqlCommand command = new MySqlCommand(query, sqlCon);
+                    MySqlDataReader reader = command.ExecuteReader();
+                    reader.Read();
+                    camporesultante = reader.GetValue(0).ToString();
+                }
+                catch (Exception ex) { Console.WriteLine(ex.Message.ToString() + " \nERROR EN CONSULTA\n -"); }
+                return camporesultante;// devuelve un arrgeglo con los campos 
+            }
+        }
+
+        public string obtenerbitacora(string usuario)
+        {
+            using (MySqlConnection sqlCon = new MySqlConnection(conexiongeneral.cadenadeconexiongeneral()))
+            {
+                string camporesultante = "";
+                try
+                {
+                    sqlCon.Open();
+                    string query = "SELECT idreg FROM pro_bitacora  WHERE usuario = '"+usuario+"' LIMIT 1";
+                    MySqlCommand command = new MySqlCommand(query, sqlCon);
+                    MySqlDataReader reader = command.ExecuteReader();
+                    reader.Read();
+                    camporesultante = reader.GetValue(0).ToString();
+                }
+                catch (Exception ex) { Console.WriteLine(ex.Message.ToString() + " \nERROR EN CONSULTA\n -"); }
+                return camporesultante;// devuelve un arrgeglo con los campos 
+            }
+        }
     }
 }

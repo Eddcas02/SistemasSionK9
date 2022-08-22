@@ -17,9 +17,9 @@ namespace SistemaSionF1.Controllers
         public string cadenadeconexiongeneral()
         {
             //string connectionString = @"Server=127.0.0.1;Database=bdgestor;Uid=root;";
-            string connectionString = @"Server=35.87.163.89;Database=dbgestor;Uid=Ecasasola;Pwd=PasT3stG$;";
+            //string connectionString = @"Server=35.87.163.89;Database=dbgestor;Uid=Ecasasola;Pwd=PasT3stG$;";
             //string connectionString = @"Server=10.60.81.5;Database=bdSistemaSionF1lupana;Uid=User4pDes@rrollo;Pwd=BDK0ntr@PG1;";
-            //string connectionString = @"Server=127.0.0.1;Database=dbgestor;Uid=root;Pwd=;";
+            string connectionString = @"Server=127.0.0.1;Database=dbgestor;Uid=root;Pwd=;";
             return connectionString;
         }
         public string Conectar(string b)
