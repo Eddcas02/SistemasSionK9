@@ -895,5 +895,37 @@ namespace SistemaSionF1.Controllers
                 return camporesultante;// devuelve un arrgeglo con los campos 
             }
         }
+
+        public DataTable reportebajas()
+        {
+            DataTable dt = new DataTable();
+
+            using (MySqlConnection sqlCon = new MySqlConnection(conexiongeneral.cadenadeconexiongeneral()))
+            {
+                try
+                {
+                    sqlCon.Open();
+                    string query = "SELECT A.Apellido1 AS PRIMER_APELLIDO, A.Apellido2 AS SEGUNDO_APELLIDO, A.Nombre1 AS PRIMER_NOMBRE, A.Nombre2 AS SEGUNDO_NOMBRE, " +
+                                   "A.[Cedula Numero] AS DPI, A.Empresa AS NO_EMPRESA, D.Descripcion AS NOMBRE_EMPRESA, A.Estado AS ESTADO_EMPLEADO, " +
+                                   "A.[Fecha Baja Laboral] AS FECHA_BAJA_LABORAL, A.[Fecha Ingreso Laboral] AS FECHA_INGRESO, A.motivo_baja AS MOTIVO_BAJA, A.Puesto AS PUESTO, " +
+                                   "B.Estado AS ESTADO_EQUIVALENCIA, B.IdFinca AS NO_FINCA, C.Descripcion AS NOMBRE_FINCA " +
+                                   "FROM SION.[dbo].EMPLEADO A " +
+                                   "INNER JOIN[dbMarcaje].[dbo].m_Equivalencia B ON B.dpi = A.[Cedula Numero] " +
+                                   "INNER JOIN SION.[dbo].FINCA C ON C.Finca = B.IdFinca " +
+                                   "INNER JOIN SION.[dbo].Empresa D ON D.Codigo = A.Empresa " +
+                                   "WHERE((A.[Fecha Baja Laboral] IS NULL) OR(A.[Fecha Baja Laboral] BETWEEN '20220801' AND '20220823')) " +
+                                   "AND A.Estado IN(4,3) AND B.Estado = 0";
+                    MySqlCommand command = new MySqlCommand(query, sqlCon);
+                    MySqlDataAdapter ds = new MySqlDataAdapter();
+                    ds.SelectCommand = command;
+                    ds.Fill(dt);
+                }
+                catch (Exception ex) { Console.WriteLine(ex.Message.ToString() + " \nERROR EN CONSULTA\n -"); }
+
+                return dt;
+            }
+        }
+
+
     }
 }

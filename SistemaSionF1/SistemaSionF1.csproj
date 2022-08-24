@@ -87,6 +87,10 @@
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1427.0\lib\net40\Microsoft.ReportViewer.WebForms.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Downloads\Microsoft.ReportViewer.WinForms\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
@@ -330,6 +334,17 @@
     <Content Include="estatico\js.rar" />
     <Content Include="estatico\js\bootstrap-select.js.map" />
     <Content Include="estatico\js\bootstrap-select.min.js.map" />
+    <Content Include="dbMarcajeDataSetBajas.xsc">
+      <DependentUpon>dbMarcajeDataSetBajas.xsd</DependentUpon>
+    </Content>
+    <None Include="dbMarcajeDataSetBajas.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dbMarcajeDataSetBajas.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="dbMarcajeDataSetBajas.xss">
+      <DependentUpon>dbMarcajeDataSetBajas.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Imagenes\addnew.png" />
     <Content Include="Imagenes\barra.png" />
@@ -699,6 +714,7 @@
     <Content Include="Views\Sesion\Ayudas\AyudaVehiculo.aspx" />
     <Content Include="Views\Sesion\Ayudas\index.html" />
     <Content Include="Views\Sesion\CerrarSesion.aspx" />
+    <Content Include="Views\Sesion\ColaboradoresBaja.aspx" />
     <Content Include="Views\Sesion\index.html" />
     <Content Include="Views\Sesion\Inicio.aspx" />
     <Content Include="Views\Sesion\Login.aspx" />
@@ -774,6 +790,11 @@
     </Compile>
     <Compile Include="CrearContraseña.aspx.designer.cs">
       <DependentUpon>CrearContraseña.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dbMarcajeDataSetBajas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbMarcajeDataSetBajas.xsd</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1137,6 +1158,13 @@
     <Compile Include="Views\Sesion\CerrarSesion.aspx.designer.cs">
       <DependentUpon>CerrarSesion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Sesion\ColaboradoresBaja.aspx.cs">
+      <DependentUpon>ColaboradoresBaja.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Sesion\ColaboradoresBaja.aspx.designer.cs">
+      <DependentUpon>ColaboradoresBaja.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Sesion\Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1414,6 +1442,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Views\Procesos\Reportes\Report1.rdlc" />
     <EmbeddedResource Include="Views\Procesos\Reportes\Report2.rdlc" />
+    <EmbeddedResource Include="Views\Sesion\Reportes\ReporteDeBaja.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
