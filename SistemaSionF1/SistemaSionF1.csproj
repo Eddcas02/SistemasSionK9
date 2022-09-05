@@ -754,6 +754,7 @@
     <Compile Include="Controllers\Bitacora.cs" />
     <Compile Include="Controllers\bitacoragen.cs" />
     <Compile Include="Controllers\claseComprobadora.cs" />
+    <Compile Include="Controllers\ClaseSesion.cs" />
     <Compile Include="Controllers\Conexion.cs" />
     <Compile Include="Controllers\Conexion_seguridad.cs" />
     <Compile Include="Controllers\ControladorLabores.cs" />

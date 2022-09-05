@@ -32,7 +32,7 @@ namespace SistemaSionF1.Controllers
                     sqlCon.Open();
                     cmd.ExecuteNonQuery();
                     //actualizaLabores();
-                    bit.bitacoraValLabor("SP_DISABLELABOR (Labor Ingreso Deshabilitado)");
+                    bit.bitacoraValLabor("SP_DISABLELABOR (Labor Ingreso Deshabilitado)", usuario);
                     //MessageBox.Show("Trigger Deshabilitado Con Exito", "Proceso");
                     return validar = "1";
                 }
@@ -88,7 +88,7 @@ namespace SistemaSionF1.Controllers
                     cmd.Connection = sqlCon;
                     sqlCon.Open();
                     cmd.ExecuteNonQuery();
-                    bit.bitacoraValLabor("SP_ENABLELABOR (Labor Ingreso Habilitado)");
+                    bit.bitacoraValLabor("SP_ENABLELABOR (Labor Ingreso Habilitado)", usuario);
                     return validar3 = "1";
                 }
                 catch

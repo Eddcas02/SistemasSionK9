@@ -19,7 +19,7 @@ namespace Login_Web
         Sentencia sn = new Sentencia();
         Logica lg = new Logica();
         Sentencia_seguridad sns = new Sentencia_seguridad();
-        
+        ClaseSesion css = new ClaseSesion();
         string abre;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -41,21 +41,30 @@ namespace Login_Web
                     try
                     {
                         nombreuser.InnerText = Session["Nombre"].ToString();
+    
+
+
                         abre = Session["sesion_usuario"].ToString();
-                        string resultado = abre.Substring(0, 1);
-                        string mayus = resultado.ToUpper();
-                        abreuser.InnerText = mayus;
-                        Button3.Visible = false;
-                        //icono.Visible = false;    
-                        DataSet ds1 = sns.conultaareaapp(sns.obteneridusuario(abre));
-                        RepetirAreas.DataSource = ds1;
-                        RepetirAreas.DataBind();
-                        
+                        if (css.obtenertoken(abre) != "")
+                        {
+
+                            string resultado = abre.Substring(0, 1);
+                            string mayus = resultado.ToUpper();
+                            abreuser.InnerText = mayus;
+                            Button3.Visible = false;
+                            //icono.Visible = false;    
+                            DataSet ds1 = sns.conultaareaapp(sns.obteneridusuario(abre));
+                            RepetirAreas.DataSource = ds1;
+                            RepetirAreas.DataBind();
+                        }
+                        else {
+                            Response.Redirect("../../Index.aspx");
+                        }
 
                     }
                     catch (Exception err)
                     {
-                        Console.WriteLine("Sesion expirada: " + err.Message);
+                     
                         Response.Redirect("../../Index.aspx");
                     }
                 }
@@ -63,7 +72,7 @@ namespace Login_Web
             catch (Exception err)
             {
                 Console.WriteLine("Sesion expirada: " + err.Message);
-                Response.Redirect("login.aspx");
+                Response.Redirect("../../Index.aspx");
             }
         }
 

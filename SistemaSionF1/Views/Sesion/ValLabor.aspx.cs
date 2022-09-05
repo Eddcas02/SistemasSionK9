@@ -16,14 +16,41 @@ namespace SistemaSionF1.Views.Sesion
     {
         ControladorLabores CL = new ControladorLabores();
         Conexion conexiongeneral = new Conexion();
+        ClaseSesion css = new ClaseSesion();
         string abre;
         protected void Page_Load(object sender, EventArgs e)
         {
-            abre = Session["sesion_usuario"].ToString();
-            if (!IsPostBack)
+            try
             {
-                LLenarComboFincaL();
+                abre = Session["sesion_usuario"].ToString();
+                if (css.obtenertoken(abre) != "")
+                {
+                    if (!IsPostBack)
+                    {
+                        LLenarComboFincaL();
+                    }
+
+                }
+                else
+                {
+
+                    Response.Redirect("../../Index.aspx");
+
+                }
+
             }
+            catch (Exception)
+            {
+
+                Response.Redirect("../../Index.aspx");
+            }
+       
+
+
+
+
+
+
         }
 
         public void LLenarComboFincaL()

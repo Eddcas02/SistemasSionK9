@@ -91,6 +91,7 @@ namespace SistemaSionF1
                             string randomstring = ccp.cadenarandom();
                             string token = ccp.Encrypt(randomstring);
                             bit.bitacoraing(IdUser.Text, "Inicio de sesion");
+                            sn.update("UPDATE gen_navegacion set estado = 0 where usuario  = '"+ Session["sesion_usuario"] + "'");
                             sn.Insertar("INSERT INTO gen_navegacion ( token,usuario,estado) VALUES ('" + token + "','" + IdUser.Text + "' , 1)");
                             PSUser.Text = "";
                             IdUser.Text = "";

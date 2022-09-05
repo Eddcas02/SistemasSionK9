@@ -23,11 +23,11 @@ namespace SistemaSionF1.Controllers
 
         }
 
-        public void bitacoraValLabor(string evento)//agregar parametro usuario para la bitacora
+        public void bitacoraValLabor(string evento , string usuario)//agregar parametro usuario para la bitacora
         {
             //string area = obtenerarea(userr);
             string ultimobit = obtenerultimo("BITACORA_MARCAJE", "idRegistro");
-            string insertbit = "INSERT INTO BITACORA_MARCAJE(idRegistro,FechaProceso,Usuario,AccionRealizada) VALUES ('" + ultimobit + "','" + fechahora + "','sa','" + evento + "')";
+            string insertbit = "INSERT INTO BITACORA_MARCAJE(idRegistro,FechaProceso,Usuario,AccionRealizada) VALUES ('" + ultimobit + "','" + fechahora + "', '"+usuario+"','" + evento + "')";
             executesql(insertbit);
 
         }

@@ -19,14 +19,42 @@ namespace SistemaSionF1.Views.Sesion
     {
         ControladorMarcaje CM = new ControladorMarcaje();
         Conexion conexiongeneral = new Conexion();
+        ClaseSesion css = new ClaseSesion();
         string abre;
         protected void Page_Load(object sender, EventArgs e)
         {
-            abre = Session["sesion_usuario"].ToString();
-            if (!IsPostBack)
+
+            try
             {
-           LLenarComboEmpresa();
+                abre = Session["sesion_usuario"].ToString();
+                if (css.obtenertoken(abre) != "")
+                {
+
+
+                    if (!IsPostBack)
+                    {
+                        LLenarComboEmpresa();
+                    }
+
+
+                }
+                else
+                {
+
+                    Response.Redirect("../../Index.aspx");
+
+                }
+
             }
+            catch (Exception)
+            {
+
+                Response.Redirect("../../Index.aspx");
+            }
+         
+
+           
+         
         }
 
         //llenado de combobox Empresa
