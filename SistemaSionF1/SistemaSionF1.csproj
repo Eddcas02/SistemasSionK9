@@ -349,6 +349,8 @@
     <Content Include="Imagenes\addnew.png" />
     <Content Include="Imagenes\barra.png" />
     <Content Include="Imagenes\cancel.png" />
+    <Content Include="Imagenes\cheque_negro.png" />
+    <Content Include="Imagenes\cheque_verde.png" />
     <Content Include="Imagenes\delete.png" />
     <Content Include="Imagenes\edit.png" />
     <Content Include="Imagenes\EP-Guadalupana.png" />
@@ -721,6 +723,7 @@
     <Content Include="Views\Sesion\Logo.png" />
     <Content Include="Views\Sesion\MantenimientosEP\Mant_epestados.aspx" />
     <Content Include="Views\Sesion\MantenimientosEP\MenuMantenimientos.aspx" />
+    <Content Include="Views\Sesion\MarcajeColaborador.aspx" />
     <Content Include="Views\Sesion\MenuBarra.aspx" />
     <Content Include="Views\Sesion\MenuBarraMantenimientos.aspx" />
     <Content Include="Views\Sesion\Reporte.aspx" />
@@ -1192,6 +1195,13 @@
     </Compile>
     <Compile Include="Views\Sesion\MantenimientosEP\MenuMantenimientos.aspx.designer.cs">
       <DependentUpon>MenuMantenimientos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sesion\MarcajeColaborador.aspx.cs">
+      <DependentUpon>MarcajeColaborador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Sesion\MarcajeColaborador.aspx.designer.cs">
+      <DependentUpon>MarcajeColaborador.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Sesion\MenuBarra.aspx.cs">
       <DependentUpon>MenuBarra.aspx</DependentUpon>

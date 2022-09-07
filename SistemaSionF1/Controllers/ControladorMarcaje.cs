@@ -49,6 +49,40 @@ namespace SistemaSionF1.Controllers
 
         }
 
+        public void MarcajePorColaborador(TextBox nFechaInicial = null, DropDownList nEmpresa = null, DropDownList nFinca = null, Label nColaborador = null)
+        {
+            using (SqlConnection sqlCon = new SqlConnection(conexiongeneral.Conectar("dbMarcajeQA")))
+            {
+
+                try
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "SP_TRANSFERENCIA_MARCAJE_COLABORADOR";
+                    cmd.Parameters.Add("@fechaAsistencia", SqlDbType.DateTime).Value = nFechaInicial.Text;
+                    cmd.Parameters.Add("@Empresa", SqlDbType.Int).Value = nEmpresa.SelectedValue;
+                    cmd.Parameters.Add("@finca", SqlDbType.Int).Value = nFinca.SelectedValue;
+                    cmd.Parameters.Add("@colaborador", SqlDbType.Int).Value = nColaborador.Text;
+                    cmd.Connection = sqlCon;
+                    sqlCon.Open();
+                    cmd.ExecuteNonQuery();
+                    bit.bitacoraRMarcaje("SP_TRANSFERENCIA_MARCAJE_COLABORADOR (" + nFechaInicial.Text + ", " + nEmpresa.SelectedValue + ", " + nFinca.SelectedValue + ", "+nColaborador.Text+")");
+                    //bit.bitacoraRMarcaje("SP_TRANSFERENCIA_MARCAJE (" + nFechaInicial.Text + ", " + Convert.ToInt32(nEmpresa.SelectedValue) + ", " + Convert.ToInt32(nFinca.SelectedValue) + ")");
+
+                    MessageBox.Show("Proceso Realizado Con Exito", "Proceso");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Proceso Con Errores", "Proceso", MessageBoxButton.OK, MessageBoxImage.Error);
+                    bit.bitacoraRMarcaje("Error al Ejecutar SP_TRANSFERENCIA_MARCAJE_COLABORADOR");
+                }
+
+            }
+
+
+        }
+
+
         public DataTable reportebajas(string fechainicio, string fechafin, string empresa, string finca)
         {
             DataTable dt = new DataTable();
