@@ -1,63 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Data.Sql;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
+using System.Data.SqlClient;
 using SistemaSionF1.Controllers;
-using System.Configuration;
-
-//Modificar las conexiones que dicen dbMarcajeQA y SIONSJ3 por las de producción que serían dbMarcaje y SION
-
+using Microsoft.Reporting.WebForms;
 
 namespace SistemaSionF1.Views.Sesion
 {
-    public partial class RMarcaje : System.Web.UI.Page
+    public partial class ColaboradoresBaja : System.Web.UI.Page
     {
         ControladorMarcaje CM = new ControladorMarcaje();
         Conexion conexiongeneral = new Conexion();
-        ClaseSesion css = new ClaseSesion();
-        string abre;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            try
+            if (!IsPostBack)
             {
-                abre = Session["sesion_usuario"].ToString();
-                if (css.obtenertoken(abre) != "")
-                {
-
-
-                    if (!IsPostBack)
-                    {
-                        LLenarComboEmpresa();
-                    }
-
-
-                }
-                else
-                {
-
-                    Response.Redirect("../../Index.aspx");
-
-                }
-
+                LLenarComboEmpresa();
             }
-            catch (Exception)
-            {
-
-                Response.Redirect("../../Index.aspx");
-            }
-         
-
-           
-         
         }
 
-        //llenado de combobox Empresa
         public void LLenarComboEmpresa()
 
         {
@@ -108,45 +74,27 @@ namespace SistemaSionF1.Views.Sesion
             }
         }
 
-            protected void Empresa_SelectedIndexChanged(object sender, EventArgs e)
+        protected void Empresa_SelectedIndexChanged(object sender, EventArgs e)
         {
             LlenarComboFinca(Empresa.SelectedValue);
         }
 
         protected void Procesar_Cick(object sender, EventArgs e)
         {
-            try
-            {
-                if(FechaInicial.Text!="" && Empresa.SelectedValue!="0" && Finca.SelectedValue!="0")
-                {
-                    string val = CM.procedimientoEjecutar(FechaInicial, Empresa, Finca, abre);
+            ReporteDocumentos.Reset();
+            ReportDataSource fuente = new ReportDataSource("DataSetColaboradoresBaja2", obtenerdatos());
 
-                    if (val=="1") {
-                        String script = "alert('Procesado con exito');";
-                        ScriptManager.RegisterStartupScript(this, GetType().GetType(), "alertMessage", script, true);
-                        Finca.SelectedIndex = 0;
-                        Empresa.SelectedIndex = 0;
-                    }
-                    else {
-                        String script = "alert('Error al procesar ');";
-                        ScriptManager.RegisterStartupScript(this, GetType().GetType(), "alertMessage", script, true);
-                    }
-                    //FechaInicial.Text = "";
-                   
-                }
-                else
-                {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "error", "alert('Complete todos los campos');", true);
-                }
-            }
-            catch
-            {
+            ReporteDocumentos.LocalReport.DataSources.Add(fuente);
+            ReporteDocumentos.LocalReport.ReportPath = "Views/Sesion/Reportes/ReporteDeBaja.rdlc";
+            ReporteDocumentos.LocalReport.Refresh();
+        }
 
-            }
-            
-            }
+        private DataTable obtenerdatos()
+        {
+            DataTable dt = new DataTable();
+            dt = CM.reportebajas(FechaInicial.Text.Replace("-",""), FechaFinal.Text.Replace("-",""), Empresa.SelectedValue, Finca.SelectedValue);
 
-
+            return dt;
+        }
     }
-
 }

@@ -329,6 +329,24 @@
     <Content Include="estatico\js.rar" />
     <Content Include="estatico\js\bootstrap-select.js.map" />
     <Content Include="estatico\js\bootstrap-select.min.js.map" />
+    <Content Include="dbMarcajeDataSetBajas.xsc">
+      <DependentUpon>dbMarcajeDataSetBajas.xsd</DependentUpon>
+    </Content>
+    <None Include="dbMarcajeDataSetBajas.xsd" />
+    <Content Include="dbMarcajeDataSetBajas.xss">
+      <DependentUpon>dbMarcajeDataSetBajas.xsd</DependentUpon>
+    </Content>
+    <Content Include="dbMarcajeDataSetBajas2.xsc">
+      <DependentUpon>dbMarcajeDataSetBajas2.xsd</DependentUpon>
+    </Content>
+    <None Include="dbMarcajeDataSetBajas2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dbMarcajeDataSetBajas2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="dbMarcajeDataSetBajas2.xss">
+      <DependentUpon>dbMarcajeDataSetBajas2.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Imagenes\addnew.png" />
     <Content Include="Imagenes\barra.png" />
@@ -698,12 +716,16 @@
     <Content Include="Views\Sesion\Ayudas\AyudaVehiculo.aspx" />
     <Content Include="Views\Sesion\Ayudas\index.html" />
     <Content Include="Views\Sesion\CerrarSesion.aspx" />
+    <Content Include="Views\Sesion\ColaboradoresBaja.aspx" />
     <Content Include="Views\Sesion\index.html" />
     <Content Include="Views\Sesion\Inicio.aspx" />
     <Content Include="Views\Sesion\Login.aspx" />
     <Content Include="Views\Sesion\Logo.png" />
     <Content Include="Views\Sesion\MantenimientosEP\Mant_epestados.aspx" />
     <Content Include="Views\Sesion\MantenimientosEP\MenuMantenimientos.aspx" />
+    <Content Include="Views\Sesion\MarcajeColaborador.aspx" />
+    <Content Include="Views\Sesion\MarcajesModificar.aspx" />
+    <Content Include="Views\Sesion\MarcajesOtraFecha.aspx" />
     <Content Include="Views\Sesion\MenuBarra.aspx" />
     <Content Include="Views\Sesion\MenuBarraMantenimientos.aspx" />
     <Content Include="Views\Sesion\Reporte.aspx" />
@@ -768,6 +790,12 @@
     <Compile Include="Controllers\Sentencia.cs" />
     <Compile Include="Controllers\Sentencia_proceso.cs" />
     <Compile Include="Controllers\Sentencia_seguridad.cs" />
+    <Compile Include="dbMarcajeDataSetBajas.Designer.cs" />
+    <Compile Include="dbMarcajeDataSetBajas2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbMarcajeDataSetBajas2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1130,6 +1158,13 @@
     <Compile Include="Views\Sesion\CerrarSesion.aspx.designer.cs">
       <DependentUpon>CerrarSesion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Sesion\ColaboradoresBaja.aspx.cs">
+      <DependentUpon>ColaboradoresBaja.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Sesion\ColaboradoresBaja.aspx.designer.cs">
+      <DependentUpon>ColaboradoresBaja.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Sesion\Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1157,6 +1192,27 @@
     </Compile>
     <Compile Include="Views\Sesion\MantenimientosEP\MenuMantenimientos.aspx.designer.cs">
       <DependentUpon>MenuMantenimientos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sesion\MarcajeColaborador.aspx.cs">
+      <DependentUpon>MarcajeColaborador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Sesion\MarcajeColaborador.aspx.designer.cs">
+      <DependentUpon>MarcajeColaborador.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sesion\MarcajesModificar.aspx.cs">
+      <DependentUpon>MarcajesModificar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Sesion\MarcajesModificar.aspx.designer.cs">
+      <DependentUpon>MarcajesModificar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sesion\MarcajesOtraFecha.aspx.cs">
+      <DependentUpon>MarcajesOtraFecha.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Sesion\MarcajesOtraFecha.aspx.designer.cs">
+      <DependentUpon>MarcajesOtraFecha.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Sesion\MenuBarra.aspx.cs">
       <DependentUpon>MenuBarra.aspx</DependentUpon>
@@ -1407,6 +1463,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Views\Procesos\Reportes\Report1.rdlc" />
     <EmbeddedResource Include="Views\Procesos\Reportes\Report2.rdlc" />
+    <EmbeddedResource Include="Views\Sesion\Reportes\ReporteDeBaja.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

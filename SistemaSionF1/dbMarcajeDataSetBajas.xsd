@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dbMarcajeDataSetBajas" targetNamespace="http://tempuri.org/dbMarcajeDataSetBajas.xsd" xmlns:mstns="http://tempuri.org/dbMarcajeDataSetBajas.xsd" xmlns="http://tempuri.org/dbMarcajeDataSetBajas.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="dbMarcajeConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="dbMarcajeConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.dbMarcajeConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="v_ColaboradorBajasTableAdapter" GeneratorDataComponentClassName="v_ColaboradorBajasTableAdapter" Name="v_ColaboradorBajas" UserDataComponentName="v_ColaboradorBajasTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="dbMarcajeConnectionString (Web.config)" DbObjectName="dbMarcaje.dbo.v_ColaboradorBajas" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT PRIMER_APELLIDO, SEGUNDO_APELLIDO, PRIMER_NOMBRE, SEGUNDO_NOMBRE, DPI, NO_EMPRESA, NOMBRE_EMPRESA, ESTADO_EMPLEADO, FECHA_BAJA_LABORAL, FECHA_INGRESO, MOTIVO_BAJA, PUESTO, ESTADO_EQUIVALENCIA, NO_FINCA, NOMBRE_FINCA FROM dbo.v_ColaboradorBajas</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="PRIMER_APELLIDO" DataSetColumn="PRIMER_APELLIDO" />
+              <Mapping SourceColumn="SEGUNDO_APELLIDO" DataSetColumn="SEGUNDO_APELLIDO" />
+              <Mapping SourceColumn="PRIMER_NOMBRE" DataSetColumn="PRIMER_NOMBRE" />
+              <Mapping SourceColumn="SEGUNDO_NOMBRE" DataSetColumn="SEGUNDO_NOMBRE" />
+              <Mapping SourceColumn="DPI" DataSetColumn="DPI" />
+              <Mapping SourceColumn="NO_EMPRESA" DataSetColumn="NO_EMPRESA" />
+              <Mapping SourceColumn="NOMBRE_EMPRESA" DataSetColumn="NOMBRE_EMPRESA" />
+              <Mapping SourceColumn="ESTADO_EMPLEADO" DataSetColumn="ESTADO_EMPLEADO" />
+              <Mapping SourceColumn="FECHA_BAJA_LABORAL" DataSetColumn="FECHA_BAJA_LABORAL" />
+              <Mapping SourceColumn="FECHA_INGRESO" DataSetColumn="FECHA_INGRESO" />
+              <Mapping SourceColumn="MOTIVO_BAJA" DataSetColumn="MOTIVO_BAJA" />
+              <Mapping SourceColumn="PUESTO" DataSetColumn="PUESTO" />
+              <Mapping SourceColumn="ESTADO_EQUIVALENCIA" DataSetColumn="ESTADO_EQUIVALENCIA" />
+              <Mapping SourceColumn="NO_FINCA" DataSetColumn="NO_FINCA" />
+              <Mapping SourceColumn="NOMBRE_FINCA" DataSetColumn="NOMBRE_FINCA" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dbMarcajeDataSetBajas" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="dbMarcajeDataSetBajas" msprop:Generator_UserDSName="dbMarcajeDataSetBajas">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="v_ColaboradorBajas" msprop:Generator_TableClassName="v_ColaboradorBajasDataTable" msprop:Generator_TableVarName="tablev_ColaboradorBajas" msprop:Generator_TablePropName="v_ColaboradorBajas" msprop:Generator_RowDeletingName="v_ColaboradorBajasRowDeleting" msprop:Generator_RowChangingName="v_ColaboradorBajasRowChanging" msprop:Generator_RowEvHandlerName="v_ColaboradorBajasRowChangeEventHandler" msprop:Generator_RowDeletedName="v_ColaboradorBajasRowDeleted" msprop:Generator_UserTableName="v_ColaboradorBajas" msprop:Generator_RowChangedName="v_ColaboradorBajasRowChanged" msprop:Generator_RowEvArgName="v_ColaboradorBajasRowChangeEvent" msprop:Generator_RowClassName="v_ColaboradorBajasRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PRIMER_APELLIDO" msprop:Generator_ColumnVarNameInTable="columnPRIMER_APELLIDO" msprop:Generator_ColumnPropNameInRow="PRIMER_APELLIDO" msprop:Generator_ColumnPropNameInTable="PRIMER_APELLIDOColumn" msprop:Generator_UserColumnName="PRIMER_APELLIDO">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SEGUNDO_APELLIDO" msprop:Generator_ColumnVarNameInTable="columnSEGUNDO_APELLIDO" msprop:Generator_ColumnPropNameInRow="SEGUNDO_APELLIDO" msprop:Generator_ColumnPropNameInTable="SEGUNDO_APELLIDOColumn" msprop:Generator_UserColumnName="SEGUNDO_APELLIDO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PRIMER_NOMBRE" msprop:Generator_ColumnVarNameInTable="columnPRIMER_NOMBRE" msprop:Generator_ColumnPropNameInRow="PRIMER_NOMBRE" msprop:Generator_ColumnPropNameInTable="PRIMER_NOMBREColumn" msprop:Generator_UserColumnName="PRIMER_NOMBRE">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SEGUNDO_NOMBRE" msprop:Generator_ColumnVarNameInTable="columnSEGUNDO_NOMBRE" msprop:Generator_ColumnPropNameInRow="SEGUNDO_NOMBRE" msprop:Generator_ColumnPropNameInTable="SEGUNDO_NOMBREColumn" msprop:Generator_UserColumnName="SEGUNDO_NOMBRE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DPI" msprop:Generator_ColumnVarNameInTable="columnDPI" msprop:Generator_ColumnPropNameInRow="DPI" msprop:Generator_ColumnPropNameInTable="DPIColumn" msprop:Generator_UserColumnName="DPI" type="xs:decimal" minOccurs="0" />
+              <xs:element name="NO_EMPRESA" msprop:Generator_ColumnVarNameInTable="columnNO_EMPRESA" msprop:Generator_ColumnPropNameInRow="NO_EMPRESA" msprop:Generator_ColumnPropNameInTable="NO_EMPRESAColumn" msprop:Generator_UserColumnName="NO_EMPRESA" type="xs:int" />
+              <xs:element name="NOMBRE_EMPRESA" msprop:Generator_ColumnVarNameInTable="columnNOMBRE_EMPRESA" msprop:Generator_ColumnPropNameInRow="NOMBRE_EMPRESA" msprop:Generator_ColumnPropNameInTable="NOMBRE_EMPRESAColumn" msprop:Generator_UserColumnName="NOMBRE_EMPRESA" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ESTADO_EMPLEADO" msprop:Generator_ColumnVarNameInTable="columnESTADO_EMPLEADO" msprop:Generator_ColumnPropNameInRow="ESTADO_EMPLEADO" msprop:Generator_ColumnPropNameInTable="ESTADO_EMPLEADOColumn" msprop:Generator_UserColumnName="ESTADO_EMPLEADO">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FECHA_BAJA_LABORAL" msprop:Generator_ColumnVarNameInTable="columnFECHA_BAJA_LABORAL" msprop:Generator_ColumnPropNameInRow="FECHA_BAJA_LABORAL" msprop:Generator_ColumnPropNameInTable="FECHA_BAJA_LABORALColumn" msprop:Generator_UserColumnName="FECHA_BAJA_LABORAL" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FECHA_INGRESO" msprop:Generator_ColumnVarNameInTable="columnFECHA_INGRESO" msprop:Generator_ColumnPropNameInRow="FECHA_INGRESO" msprop:Generator_ColumnPropNameInTable="FECHA_INGRESOColumn" msprop:Generator_UserColumnName="FECHA_INGRESO" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="MOTIVO_BAJA" msprop:Generator_ColumnVarNameInTable="columnMOTIVO_BAJA" msprop:Generator_ColumnPropNameInRow="MOTIVO_BAJA" msprop:Generator_ColumnPropNameInTable="MOTIVO_BAJAColumn" msprop:Generator_UserColumnName="MOTIVO_BAJA" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PUESTO" msprop:Generator_ColumnVarNameInTable="columnPUESTO" msprop:Generator_ColumnPropNameInRow="PUESTO" msprop:Generator_ColumnPropNameInTable="PUESTOColumn" msprop:Generator_UserColumnName="PUESTO" type="xs:int" minOccurs="0" />
+              <xs:element name="ESTADO_EQUIVALENCIA" msprop:Generator_ColumnVarNameInTable="columnESTADO_EQUIVALENCIA" msprop:Generator_ColumnPropNameInRow="ESTADO_EQUIVALENCIA" msprop:Generator_ColumnPropNameInTable="ESTADO_EQUIVALENCIAColumn" msprop:Generator_UserColumnName="ESTADO_EQUIVALENCIA" type="xs:boolean" minOccurs="0" />
+              <xs:element name="NO_FINCA" msprop:Generator_ColumnVarNameInTable="columnNO_FINCA" msprop:Generator_ColumnPropNameInRow="NO_FINCA" msprop:Generator_ColumnPropNameInTable="NO_FINCAColumn" msprop:Generator_UserColumnName="NO_FINCA" type="xs:int" minOccurs="0" />
+              <xs:element name="NOMBRE_FINCA" msprop:Generator_ColumnVarNameInTable="columnNOMBRE_FINCA" msprop:Generator_ColumnPropNameInRow="NOMBRE_FINCA" msprop:Generator_ColumnPropNameInTable="NOMBRE_FINCAColumn" msprop:Generator_UserColumnName="NOMBRE_FINCA">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
