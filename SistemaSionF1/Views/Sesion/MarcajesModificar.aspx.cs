@@ -189,6 +189,7 @@ namespace SistemaSionF1.Views.Sesion
         {
             gridViewColaboradores.EditIndex = e.NewEditIndex;
             llenargridviewcolaboradores();
+            //MaintainScrollPositionOnPostBack = true;
         }
 
         protected void gridColaboradores_RowUpdating(object sender, GridViewUpdateEventArgs e)

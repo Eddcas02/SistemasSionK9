@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MarcajeColaborador.aspx.cs" Inherits="SistemaSionF1.Views.Sesion.MarcajeColaborador" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MaintainScrollPositionOnPostback="true" CodeBehind="MarcajeColaborador.aspx.cs" Inherits="SistemaSionF1.Views.Sesion.MarcajeColaborador" %>
 
 <!DOCTYPE html>
 

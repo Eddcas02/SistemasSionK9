@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MarcajesModificar.aspx.cs" Inherits="SistemaSionF1.Views.Sesion.MarcajesModificar" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MaintainScrollPositionOnPostBack="true" CodeBehind="MarcajesModificar.aspx.cs" Inherits="SistemaSionF1.Views.Sesion.MarcajesModificar" %>
 
 <!DOCTYPE html>
 
@@ -289,11 +289,17 @@
                                     <ItemTemplate>
                                        <asp:Label ID="lblobservaciones" Text='<%# Eval("Observaciones") %>' runat="server" />
                                     </ItemTemplate>
+                                     <EditItemTemplate>
+                                        <asp:TextBox ID="txtobservaciones" Text='<%# Eval("Observaciones") %>' runat="server" />
+                                    </EditItemTemplate>
                                 </asp:TemplateField>
                                  <asp:TemplateField ControlStyle-CssClass="diseño"  HeaderText="Motivo">
                                     <ItemTemplate>
                                        <asp:Label ID="lblmotivo" Text='<%# Eval("Motivo") %>' runat="server" />
                                     </ItemTemplate>
+                                     <EditItemTemplate>
+                                        <asp:TextBox ID="txtmotivo" Text='<%# Eval("Motivo") %>' runat="server" />
+                                    </EditItemTemplate>
                                 </asp:TemplateField>
                                  <asp:TemplateField HeaderText="Opciones">
                         <ItemTemplate>
