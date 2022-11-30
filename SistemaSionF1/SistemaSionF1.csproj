@@ -351,6 +351,8 @@
     <Content Include="Imagenes\addnew.png" />
     <Content Include="Imagenes\barra.png" />
     <Content Include="Imagenes\cancel.png" />
+    <Content Include="Imagenes\cheque_negro.png" />
+    <Content Include="Imagenes\cheque_verde.png" />
     <Content Include="Imagenes\delete.png" />
     <Content Include="Imagenes\edit.png" />
     <Content Include="Imagenes\EP-Guadalupana.png" />

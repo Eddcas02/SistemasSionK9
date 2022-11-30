@@ -913,10 +913,8 @@ C:\Users\aortiz\Documents\GitHub\SistemasSionK9\SistemaSionF1\bin\pt\Microsoft.R
 C:\Users\aortiz\Documents\GitHub\SistemasSionK9\SistemaSionF1\bin\ru\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\aortiz\Documents\GitHub\SistemasSionK9\SistemaSionF1\bin\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\aortiz\Documents\GitHub\SistemasSionK9\SistemaSionF1\bin\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
-C:\Users\aortiz\Documents\GitHub\SistemasSionK9\SistemaSionF1\obj\Debug\SistemaSionF1.csprojAssemblyReference.cache
-C:\Users\aortiz\Documents\GitHub\SistemasSionK9\SistemaSionF1\obj\Debug\RdlCompile.cache
-C:\Users\aortiz\Documents\GitHub\SistemasSionK9\SistemaSionF1\obj\Debug\RdlCompile.compiled
 C:\Users\aortiz\Documents\GitHub\SistemasSionK9\SistemaSionF1\obj\Debug\SistemaSionF1.csproj.CoreCompileInputs.cache
 C:\Users\aortiz\Documents\GitHub\SistemasSionK9\SistemaSionF1\obj\Debug\SistemaSionF1.csproj.CopyComplete
 C:\Users\aortiz\Documents\GitHub\SistemasSionK9\SistemaSionF1\obj\Debug\SistemaSionF1.dll
 C:\Users\aortiz\Documents\GitHub\SistemasSionK9\SistemaSionF1\obj\Debug\SistemaSionF1.pdb
+C:\Users\aortiz\Documents\GitHub\SistemasSionK9\SistemaSionF1\obj\Debug\SistemaSionF1.csproj.AssemblyReference.cache

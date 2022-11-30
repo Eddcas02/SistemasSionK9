@@ -191,7 +191,7 @@ justify-content:flex-start;
         </div>
 
         <asp:LinkButton ID="categoria" runat="server" OnClick="categoria_Click" ClientIDMode="Static"></asp:LinkButton>
-         <asp:LinkButton ID="Documento" runat="server" OnClick="documento_Click" ClientIDMode="Static"></asp:LinkButton>
+         <asp:LinkButton ID="Documento" runat="server" OnClick="documento_Click" documento_ClickClientIDMode="Static"></asp:LinkButton>
 
 
         <script>

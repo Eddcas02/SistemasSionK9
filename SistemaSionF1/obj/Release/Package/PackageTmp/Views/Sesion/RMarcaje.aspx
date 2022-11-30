@@ -7,6 +7,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+
+
+<link href="../../EstaticosMDI/cssContene.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+
+
+
 <link rel="preconnect" href="https://fonts.gstatic.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet"/>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -193,14 +204,23 @@
      <div id="menu" runat="server" class="menu"></div>
     <form id="form1" runat="server">
              <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+         <div class="col-4" style="margin-top:1% ; margin-left:1%">
+           
+               
+             
+  <a href="../Sesion/MenuBarra.aspx" ><i style="color:black" class="fa fa-home fa-3x"></i></a>
+
+
+                    </div>
         <div class="general">
             <p id="color" runat="server" hidden="hidden"></p>
             <div class="formularioCobros">
+                 
                   <div style="display:flex; justify-content:center">
                     <label style="font-size:18px" class="titulos"><b>Recuperación de Marcajes</b></label>
                  </div><br />
 
-              
+                
                   <div class="linea"></div>
             <div class="encabezado">
               <div class="formatoTitulo" style="margin-bottom:5px">

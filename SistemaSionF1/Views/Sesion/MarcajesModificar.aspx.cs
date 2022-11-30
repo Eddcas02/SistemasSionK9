@@ -103,6 +103,7 @@ namespace SistemaSionF1.Views.Sesion
                     sqlCon.Open();
                     string query = "select res.IdEmpresa " +
                     ", res.IdColaborador " +
+                    ", RES.CodigoColaboradorBiometrico " +
                     ",res.NombreCompleto " +
                     ",res.Fecha " +
                     ",res.Entrada " +
@@ -122,6 +123,7 @@ namespace SistemaSionF1.Views.Sesion
                     "select qb.IdEmpresa " +
                     ", qb.IdColaborador " +
                     ", qb.NombreCompleto " +
+                    ", QB.CodigoColaboradorBiometrico "+
                     ", '" + FechaInicial.Text.Replace("-", "") + "' 'Fecha' " +
                     ", (select min(A.EntryTime) from dbMarcaje.dbo.AttnInfo A where A.EmpCode = QB.CodigoColaboradorBiometrico and A.EntryDate = '" + FechaInicial.Text.Replace("-", "") + "' and A.DeviceID in (Select BF.DeviceID from dbMarcaje.dbo.m_BiometricoFinca BF where BF.IdFinca in (1, 2, 3, 4, 5, 6, 7))) " +
                     "'Entrada' " +
@@ -187,28 +189,50 @@ namespace SistemaSionF1.Views.Sesion
 
         protected void gridColaboradores_RowEditing(object sender, GridViewEditEventArgs e)
         {
+            Label colab = gridViewColaboradores.Rows[e.NewEditIndex].FindControl("lblcodbio") as Label;
+            
             gridViewColaboradores.EditIndex = e.NewEditIndex;
             llenargridviewcolaboradores();
-            //MaintainScrollPositionOnPostBack = true;
+            colab.Focus();
+            MaintainScrollPositionOnPostBack = true;
         }
 
         protected void gridColaboradores_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
+            string abre = Session["sesion_usuario"].ToString();
             try
             {
-                using (SqlConnection sqlCon = new SqlConnection(conexiongeneral.Conectar("SION")))
+                Label colab = gridViewColaboradores.Rows[e.RowIndex].FindControl("lblcodbio") as Label;
+                Label colab2 = gridViewColaboradores.Rows[e.RowIndex].FindControl("lblcolab") as Label;
+                TextBox entrada = gridViewColaboradores.Rows[e.RowIndex].FindControl("txtEntrada") as TextBox;
+                TextBox salida = gridViewColaboradores.Rows[e.RowIndex].FindControl("txtSalida") as TextBox;
+                Label bio = gridViewColaboradores.Rows[e.RowIndex].FindControl("lblbiometrico") as Label;
+
+                //Label colab = (gridViewColaboradores.SelectedRow.FindControl("lblcodbio") as Label);
+                //TextBox entrada = (gridViewColaboradores.SelectedRow.FindControl("txtEntrada") as TextBox);
+                //TextBox salida = (gridViewColaboradores.SelectedRow.FindControl("txtSalida") as TextBox);
+
+                if (entrada.Text == "" || salida.Text == "")
                 {
-                    sqlCon.Open();
-                    string query = "UPDATE gen_area SET codgenarea=@FirstName,codgensucursal=@Contact,gen_areanombre=@Contact2 WHERE codgenarea = @id";
-                    SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
-                    sqlCmd.Parameters.AddWithValue("@FirstName", (gridViewColaboradores.Rows[e.RowIndex].FindControl("txtFirstName") as TextBox).Text.Trim());
-                    sqlCmd.Parameters.AddWithValue("@Contact", (gridViewColaboradores.Rows[e.RowIndex].FindControl("txtContact") as TextBox).Text.Trim());
-                    sqlCmd.Parameters.AddWithValue("@Contact2", (gridViewColaboradores.Rows[e.RowIndex].FindControl("txtContact2") as TextBox).Text.Trim());
-                    sqlCmd.Parameters.AddWithValue("@id", Convert.ToInt32(gridViewColaboradores.DataKeys[e.RowIndex].Value.ToString()));
-                    sqlCmd.ExecuteNonQuery();
-                    gridViewColaboradores.EditIndex = -1;
-                    llenargridviewcolaboradores();
+                    ScriptManager.RegisterStartupScript(this, GetType(), "error", "alert('Complete todos los campos');", true);
                 }
+                else
+                {
+                    string val = CM.MaodificarMarcaje(FechaInicial, Empresa, Finca, colab, colab2, entrada, salida, bio, abre);
+
+                    if(val == "1")
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "error", "alert('Actualizado correctamente');", true);
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "error", "alert('Error al actualizar el registro');", true);
+                    }
+                }
+                gridViewColaboradores.EditIndex = -1;
+                llenargridviewcolaboradores();
+                colab.Focus();
+
             }
             catch
             {

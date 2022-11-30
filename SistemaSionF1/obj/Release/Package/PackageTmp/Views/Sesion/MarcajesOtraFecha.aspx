@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ValLabor.aspx.cs" Inherits="SistemaSionF1.Views.Sesion.ValLabor" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MarcajesOtraFecha.aspx.cs" Inherits="SistemaSionF1.Views.Sesion.MarcajesOtraFecha" %>
 
 <!DOCTYPE html>
 

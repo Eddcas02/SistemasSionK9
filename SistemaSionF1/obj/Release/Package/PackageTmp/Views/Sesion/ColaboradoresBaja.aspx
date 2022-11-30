@@ -1,6 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ValLabor.aspx.cs" Inherits="SistemaSionF1.Views.Sesion.ValLabor" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ColaboradoresBaja.aspx.cs" Inherits="SistemaSionF1.Views.Sesion.ColaboradoresBaja" %>
+
+
+<%@ Register Assembly="Microsoft.ReportViewer.WebForms" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
+
 
 <!DOCTYPE html>
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -12,20 +17,6 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css" rel="stylesheet"/>
-
-
-
-
-
-
-
-    <link href="../../EstaticosMDI/cssContene.css" rel="stylesheet" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-
-
     <title>Marcajes</title>
      <style>
          @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400&display=swap');
@@ -207,19 +198,11 @@
      <div id="menu" runat="server" class="menu"></div>
     <form id="form1" runat="server">
              <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-        <div class="col-4" style="margin-top:1% ; margin-left:1%">
-           
-               
-             
-  <a href="../Sesion/MenuBarra.aspx" ><i style="color:black" class="fa fa-home fa-3x"></i></a>
-
-
-                    </div>
         <div class="general">
             <p id="color" runat="server" hidden="hidden"></p>
             <div class="formularioCobros">
                   <div style="display:flex; justify-content:center">
-                    <label style="font-size:18px" class="titulos"><b>Validar Labores</b></label>
+                    <label style="font-size:18px" class="titulos"><b>Colaboradores de baja activos</b></label>
                  </div><br />
 
               
@@ -227,18 +210,21 @@
             <div class="encabezado">
               <div class="formatoTitulo" style="margin-bottom:5px">
                 <label class="titulos" ><b>Fecha inicial</b></label>
-                <label class="titulos" style="margin-left:40%"><b>Fecha final</b></label>
+                  <label class="titulos" style="margin-left:40%"><b>Fecha final</b></label>
                                </div>
                 <div class="formato">
-                    <asp:TextBox  ID="FechaInicialL" runat="server" type="date" class="formatoinput"/>
+                         <asp:TextBox  ID="FechaInicial" runat="server" type="date" class="formatoinput"/>
                     <asp:TextBox  ID="FechaFinal" runat="server" type="date" class="formatoinput"/>
                                               </div><br />
              
             <div class="formatoTitulo" style="margin-bottom:5px">
-                        <label class="titulos"><b>Finca</b></label>
+                        <label class="titulos"><b>Empresa</b></label>
+                         <label class="titulos" style="margin-left:57%"><b>Finca</b></label>
+                       
                   </div>
                 <div class="comboboxs">
-                         <asp:DropDownList id="FincaL" runat="server" class="formatoinput4" AutoPostBack="false" ></asp:DropDownList>
+                        <asp:DropDownList id="Empresa" runat="server" class="formatoinput4" AutoPostBack="true" OnSelectedIndexChanged="Empresa_SelectedIndexChanged"></asp:DropDownList>
+                         <asp:DropDownList id="Finca" runat="server" class="formatoinput4" AutoPostBack="false" style="margin-right:39%"></asp:DropDownList>
                 </div><br />
 
                <br /><br />
@@ -248,6 +234,12 @@
                     </div>
                 </div>
                  <div class="linea"></div><br /><br />
+
+               
+                   <div class="formato">
+                     <rsweb:reportviewer id="ReporteDocumentos" runat="server" style="min-width: 100%; max-width: 100%; width: 25%" showbackbutton="False" showfindcontrols="False" showrefreshbutton="False" showzoomcontrol="False"></rsweb:reportviewer>
+                    </div>
+
                 </div>
         </div>
 

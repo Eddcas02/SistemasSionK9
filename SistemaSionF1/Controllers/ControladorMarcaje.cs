@@ -126,6 +126,89 @@ namespace SistemaSionF1.Controllers
 
         }
 
+        public string MaodificarMarcaje(TextBox nFechaInicial = null, DropDownList nEmpresa = null, DropDownList nFinca = null, Label nColaborador = null, Label nColaborador2 = null, TextBox entrada = null, TextBox salida = null, Label bio = null, string usuario = null)
+        {
+            using (SqlConnection sqlCon = new SqlConnection(conexiongeneral.Conectar("dbMarcaje")))
+            {
+
+                try
+                {
+                    //SqlCommand cmd = new SqlCommand();
+                    //cmd.CommandType = CommandType.StoredProcedure;
+                    //cmd.CommandText = "SP_TRANSFERENCIA_MARCAJE_COLABORADOR";
+                    //cmd.Parameters.Add("@fechaAsistencia", SqlDbType.DateTime).Value = nFechaInicial.Text;
+                    //cmd.Parameters.Add("@Empresa", SqlDbType.Int).Value = nEmpresa.SelectedValue;
+                    //cmd.Parameters.Add("@finca", SqlDbType.Int).Value = nFinca.SelectedValue;
+                    //cmd.Parameters.Add("@colaborador", SqlDbType.Int).Value = nColaborador.Text;
+                    //cmd.Connection = sqlCon;
+                    //sqlCon.Open();
+                    //cmd.ExecuteNonQuery();
+                    //bit.bitacoraRMarcaje("SP_TRANSFERENCIA_MARCAJE_COLABORADOR (" + nFechaInicial.Text + ", " + nEmpresa.SelectedValue + ", " + nFinca.SelectedValue + ", " + nColaborador.Text + ")", usuario);
+                    string biometrico = "";
+                    string query = "";
+                    string query2 = "";
+
+                    if (bio.Text == "" || bio.Text == null)
+                    {
+                        biometrico = obteneridbiometrico(nFinca.SelectedValue);
+                    }
+                    else
+                    {
+                        biometrico = bio.Text;
+                    }
+
+
+
+
+
+                    sqlCon.Open();
+
+                    if (entrada.Text == "" || entrada.Text == null)
+                    {
+
+                    }
+                    else
+                    {
+                        query = "INSERT INTO AttnInfo(Empcode,EntryDate,EntryTime,DeviceID) values('" + nColaborador.Text + "','" + nFechaInicial.Text.Replace("-", "") + "','" + entrada.Text + "','" + biometrico + "')";
+                        SqlCommand myCommand = new SqlCommand(query, sqlCon);
+                        myCommand.ExecuteNonQuery();
+                        bit.bitacoraRMarcaje("INSERT INTO AttnInfo values('" + nColaborador + "','" + nFechaInicial.Text + "','" + entrada + "','15')", usuario);
+                    }
+
+
+                    if (salida.Text == "" || salida.Text == null)
+                    {
+
+                    }
+                    else
+                    {
+                        query2 = "INSERT INTO AttnInfo(Empcode,EntryDate,EntryTime,DeviceID) values('" + nColaborador.Text + "','" + nFechaInicial.Text.Replace("-", "") + "','" + salida.Text + "','" + biometrico + "')";
+                        SqlCommand my = new SqlCommand(query2, sqlCon);
+                        my.ExecuteNonQuery();
+                        bit.bitacoraRMarcaje("INSERT INTO AttnInfo values('" + nColaborador + "','" + nFechaInicial.Text + "','" + salida + "','15')", usuario);
+
+                    }
+
+                    //SqlDataReader reader = myCommand.ExecuteReader();
+                    //SqlDataReader reader2 = myCommand2.ExecuteReader();
+
+                    MarcajePorColaborador(nFechaInicial, nEmpresa, nFinca, nColaborador2, usuario);
+                    return validacion = "1";
+                }
+                catch (Exception ex)
+                {
+                    //MessageBox.Show("Proceso Con Errores", "Proceso", MessageBoxButton.OK, MessageBoxImage.Error);
+                    bit.bitacoraRMarcaje("Error al insertar marcaje", usuario);
+
+                    return validacion = "0";
+                }
+
+            }
+
+
+        }
+
+
         public DataTable reportebajas(string fechainicio, string fechafin, string empresa, string finca)
         {
             DataTable dt = new DataTable();
@@ -158,6 +241,29 @@ namespace SistemaSionF1.Controllers
             }
         }
 
+        public string obteneridbiometrico(string finca)
+        {
 
+            using (SqlConnection sqlCon = new SqlConnection(conexiongeneral.Conectar("dbMarcaje")))
+            {
+                string camporesultante = "";
+                try
+                {
+                    string consultaGraAsis = "SELECT top (1) [DeviceID] FROM [dbMarcaje].[dbo].[m_BiometricoFinca] where IdFinca = " + finca + "";
+                    sqlCon.Open();
+                    SqlCommand command = new SqlCommand(consultaGraAsis, sqlCon);
+                    SqlDataReader reader = command.ExecuteReader();
+                    reader.Read();
+                    camporesultante = reader.GetValue(0).ToString();
+                }
+                catch (Exception ex)
+                {
+                    camporesultante = "0";
+                    Console.WriteLine(ex.Message.ToString() + " \nERROR EN CONSULTA\n -");
+                }
+                return camporesultante;// devuelve un arrgeglo con los campos 
+            }
+
+        }
     }
 }
